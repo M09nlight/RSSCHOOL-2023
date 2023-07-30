@@ -232,7 +232,7 @@ h2 {
     font-weight: bold;
 }
 .season_text {
-    padding: 45px 92px 40px 20px;
+    padding: 43px 92px 42px 22px;
 }
 ul li {
     font-size: 20px;
@@ -468,13 +468,12 @@ ul li {
 .librarycard_allinfo {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 41px;
 }
 .container_card {
     display: flex;
     flex-direction: column;
     margin: 0;
-    margin-left: 20px;
 }
 .libcard_table__name {
     text-align: left;
@@ -485,8 +484,8 @@ ul li {
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.6px;
-    margin-top: 41px;
     margin-left: 138px;
+    padding-bottom: 30px;
 }
 .libcard_table {
     text-align: left;
@@ -580,8 +579,6 @@ ul li {
 }
 .librarycard_request {
     text-align: right;
-    margin-right: 20px;
-    margin-top: 10px;
 }
 .librarycard_request__p {
     color: #000;
@@ -593,15 +590,14 @@ ul li {
     letter-spacing: 0.6px;
 }
 .librarycard_request__txt {
-    color: #000;
     text-align: right;
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: 40px;
+    line-height: 40px; /* 200% */
     letter-spacing: 0.4px;
-    padding-top: 5px;
+    margin: 35px 0px;
 }
 .librarycard_request_btm {
     background-color: #fff;
@@ -619,7 +615,6 @@ ul li {
     letter-spacing: 1px;
     padding: 0 auto;
     margin-left: 16px;
-    margin-top: 15px;
     transition-duration: 0.3s;
     cursor: pointer;
 }
@@ -631,13 +626,13 @@ ul li {
     display: flex;
     justify-content: space-between;
 }
-.ftr_body_top_left {
+.footer_body_top_left {
     display: inline-flex;
     flex-direction: column;
     margin-top: 20px;
     margin-left: 20px;
 }
-.ftr_body_top_right {
+.footer_body_top_right {
     display: inline-flex;
     justify-content: space-between;
     flex-direction: column;
@@ -654,7 +649,7 @@ ul li {
     margin-top: 19px;
 }
 
-.ftr_adrs {
+.footer_address {
     color: #fff;
     font-family: Inter;
     font-size: 15px;
@@ -691,65 +686,31 @@ ul li {
     margin: 0;
     margin-bottom: 10px;
 }
-.weekends {
+.mr-1px {
     margin-right: 1px;
 }
 .footer {
     background-color: #0c0c0e;
     margin-top: 25px;
 }
-.footer_body_year {
-    display: flex;
-    text-align: center;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 2px;
-    margin: 0;
-}
-.footer_body_username {
-    text-align: center;
-    text-decoration: none;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 40px;
-    letter-spacing: 2px;
-    margin: 0;
-    padding: 0;
-    border-bottom: 0 solid white;
-    transition: 1s;
-}
 .footer_body__bottom {
+    padding: 35px 20px 44px 20px;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+    letter-spacing: 2px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    text-align: center;
-    margin: 0;
-    margin-left: 20px;
-    margin-right: 21px;
-    margin-top: 35px;
-    padding-bottom: 35px;
-}
-
-.footer_body_rss {
-    text-align: center;
-    text-decoration: none;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 2px;
-    margin: 0;
-    padding: 0;
-    margin-left: 70px;
-    border-bottom: 0 solid white;
-    transition: 1s;
 }
 a:hover {
     color: #bb945f;
+}
+.pl-50 {
+    padding-left: 55px;
+}
+.footer_item_icon:hover img {
+    border-bottom: 1px solid #bb945f;
 }
