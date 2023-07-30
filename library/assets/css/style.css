@@ -750,3 +750,6 @@ ul li {
     border-bottom: 0 solid white;
     transition: 1s;
 }
+a:hover {
+    color: #bb945f;
+}
