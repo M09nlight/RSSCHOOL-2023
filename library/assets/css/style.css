@@ -711,3 +711,6 @@ a:hover {
 .pl-50 {
     padding-left: 55px;
 }
+.footer_item_icon:hover img {
+    border-bottom: 1px solid #bb945f;
+}
