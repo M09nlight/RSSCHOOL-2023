@@ -114,7 +114,9 @@ h2 {
 .header__inner .nav ul li {
     padding-right: 30px;
 }
-
+.header__inner .nav ul li:last-child {
+    padding-right: 0;
+}
 .header__inner img {
     vertical-align: middle;
     padding-left: 10px;
