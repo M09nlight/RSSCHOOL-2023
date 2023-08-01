@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="https://rs.school/favicon.ico">
+  <link rel="shortcut icon" href="./favicon.ico">
   <title>Library</title>
 </head>
 
@@ -16,16 +17,18 @@
         <div class="header__title">
           <h2>Brooklyn Public Library</h2>
         </div>
-        <nav class="nav">
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#favorites">Favorites</a></li>
-            <li><a href="#coffeeshop">Coffee shop</a></li>
-            <li><a href="#contacts">Contacts</a></li>
-            <li><a href="#librarycard">Library Card</a></li>
-            <li><img src="assets/svg/icon_profile.svg" alt=""></li>
-          </ul>
-        </nav>
+        <div class="d-flex">
+          <nav class="nav">
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#favorites">Favorites</a></li>
+              <li><a href="#coffeeshop">Coffee shop</a></li>
+              <li><a href="#contacts">Contacts</a></li>
+              <li><a href="#librarycard">Library Card</a></li>
+            </ul>
+          </nav>
+          <img src="assets/svg/icon_profile.svg" alt="">
+        </div>
       </div>
     </div>
   </header>
@@ -160,7 +163,7 @@
               her family) exploring how the Windsors have evolved and thrived
               as the modern world has changed around them.
             </div>
-            <button class="btn own">Own</button>
+            <button class="btn own" disabled>Own</button>
             <img src="assets/img/book_4.png" alt="">
           </div>
         </div>
@@ -260,11 +263,13 @@
         <div class="contacts_info">
           <div class="text_info">
             <p class="p_bold pb-40">For all Library inquiries:</p>
-            <p class="pb-20">Please call (617) 730-2370</p>
-            <p class="pb-20">For TTY service, please call (617) 730-2370</p>
-            <p class="pb-40">Putterham Library: (617) 730-2385</p>
+            <p class="pb-20">Please call <a href="tel:(617) 730-2370">(617) 730-2370</a></p>
+            <p class="pb-20">For TTY service, please call <a href="tel:(617) 730-2370">
+                (617) 730-2370
+              </a></p>
+            <p class="pb-40">Putterham Library: <a href="tel:(617) 730-2385">(617) 730-2385</a></p>
             <p class="p_bold pb-20">Senior Staff</p>
-            <p>Library Director: <span class="p_bold">Amanda Hirst</span></p>
+            <p>Library Director: <a class="p_bold" href="mailto:Amanda Hirst@gmail.com">Amanda Hirst</a></p>
           </div>
           <div>
             <img src="assets/img/map.png" alt="">
@@ -282,7 +287,7 @@
             <p class="libcard_table__name">Find your Library card</p>
             <form class="libcard_table">
               <div class="libcard_block">
-                <label class="libcard_table__lb">Brooklyn Public Library</label>
+                <span class="libcard_table__lb">Brooklyn Public Library</span>
                 <input class="libcard_table_inp" type="text" placeholder="Reader's name">
                 <input class="libcard_table_inp" type="text" placeholder="Card number">
               </div>
@@ -326,7 +331,7 @@
                   alt="icon_instagram"></a>
             </li>
             <li class="footer_item_icon">
-              <a href="https://www.facebook.com/brklib/"><img class="footer_icon" src="assets/svg/u_twitter.svg"
+              <a href="https://www.facebook.com/brklib/"><img class="footer_icon" src="assets/svg/u_facebook.svg"
                   alt="icon_facebook"></a>
             </li>
           </ul>
