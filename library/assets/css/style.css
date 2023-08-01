@@ -37,6 +37,7 @@
     box-sizing: border-box;
 }
 html {
+    scroll-behavior: smooth;
     font-size: 16px;
 }
 body {
@@ -320,12 +321,17 @@ ul li {
     border: 1px solid #0c0c0e;
     background-color: #fff;
     margin-top: auto;
+    transition: all 0.5s ease 0s;
 }
 .btn:not(.own):hover {
     border-radius: 2px;
     border: 1px solid #bb945f;
     background-color: #bb945f;
+    transition: all 0.5s ease 0s;
     cursor: pointer;
+}
+.btn[disabled] {
+    pointer-events: none;
 }
 .btn.own {
     border-radius: 2px;
