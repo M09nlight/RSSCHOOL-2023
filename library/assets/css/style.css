@@ -179,12 +179,30 @@ h2 {
     display: flex;
     justify-content: space-between;
 }
-.about__pagination img {
-    padding: 40px 0px 40px 0px;
-    display: block;
-    margin: 0 auto;
+.about__pagination {
+    display: flex;
+    justify-content: center;
 }
-
+.pagination_btn {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+.pagination_btn:before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: block;
+    border-radius: 50%;
+    background-color: black;
+}
+.pagination_btn.active:before {
+    background-color: #bb945f;
+}
 .favorites_container {
     padding: 20px 20px 0px 20px;
     max-height: 1439;
@@ -194,7 +212,8 @@ h2 {
 .section__title {
 }
 .favourite__season {
-    padding-top: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     font-weight: 700;
     line-height: normal;
 }
@@ -208,6 +227,9 @@ h2 {
 }
 .seasons input[type="radio"] {
     display: none;
+}
+.seasons input[type="radio"]:hover {
+    cursor: pointer;
 }
 .seasons .custom_checkbox {
     display: inline-block;
@@ -235,16 +257,24 @@ h2 {
     opacity: 1;
 }
 .seasons input[type="radio"]:checked ~ .season_text {
-    font-weight: bold;
+    text-stroke: 1px #000000;
+    -webkit-text-stroke: 1px #000000;
 }
 .season_text {
-    padding: 43px 90px 42px 20px;
+    padding-left: 20px;
+}
+.season_label {
+    margin-right: 90px;
+}
+.season_label:hover {
+    cursor: pointer;
 }
 ul li {
     font-size: 20px;
 }
 
 .favourite__items {
+    margin-top: 42px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
