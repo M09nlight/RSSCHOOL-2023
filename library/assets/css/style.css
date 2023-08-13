@@ -430,12 +430,12 @@ ul li {
     row-gap: 40px;
 }
 .menu_left {
-    width: 438px;
+    max-width: 438px;
     display: inline-flex;
     flex-direction: column;
 }
 .menu_right {
-    width: 482px;
+    max-width: 438px;
     display: inline-flex;
     flex-direction: column;
 }
@@ -990,6 +990,17 @@ a:hover {
         flex-wrap: wrap;
         max-width: 100%;
         column-gap: 0px;
+    }
+    .menu_line__right {
+        margin: 20px 20px 0px;
+        width: 40px;
+    }
+    .menu_left .menu_item__name {
+        margin-right: 20px;
+    }
+    .menu_line {
+        margin: 0px 20px 0px auto;
+        width: 40px;
     }
 }
 .hide {
