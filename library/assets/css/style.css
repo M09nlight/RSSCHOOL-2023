@@ -858,6 +858,7 @@ a:hover {
         position: relative;
         width: 45px;
         height: 20px;
+        cursor: pointer;
     }
     .header__burger::before,
     .header__burger::after {
