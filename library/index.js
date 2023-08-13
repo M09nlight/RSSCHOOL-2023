@@ -1,4 +1,4 @@
-let menu = document.querySelector(".header__list");
+let menu = document.querySelector(".header__nav");
 let burger = document.querySelector(".header__burger");
 
 burger.onclick = function (e) {
