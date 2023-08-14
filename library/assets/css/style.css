@@ -435,7 +435,7 @@ ul li {
     flex-direction: column;
 }
 .menu_right {
-    max-width: 438px;
+    /* max-width: 438px; */
     display: inline-flex;
     flex-direction: column;
 }
@@ -464,6 +464,9 @@ ul li {
     line-height: 40px;
     letter-spacing: 2px;
     text-transform: capitalize;
+}
+.menu_left .menu_item__name {
+    margin-right: 57px;
 }
 .menu_item__name {
     color: #000;
@@ -987,9 +990,6 @@ a:hover {
     }
     .welcome__content {
         background: lightgray 50% / cover no-repeat url("../img/welcome-768.jpg");
-    }
-    .menu_left .menu_item__name {
-        margin-right: 55px;
     }
 }
 @media (max-width: 700px) {
