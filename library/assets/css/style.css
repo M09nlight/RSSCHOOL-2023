@@ -842,6 +842,7 @@ a:hover {
     .header__list {
         flex-direction: column;
         flex-wrap: wrap;
+        gap: 30px;
         align-content: center;
         text-align: center;
         padding-top: 10px;
@@ -983,6 +984,12 @@ a:hover {
     .container {
         max-width: 768px;
         margin: 0 auto;
+    }
+    .welcome__content {
+        background: lightgray 50% / cover no-repeat url("../img/welcome-768.jpg");
+    }
+    .menu_left .menu_item__name {
+        margin-right: 55px;
     }
 }
 @media (max-width: 700px) {
