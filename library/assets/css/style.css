@@ -197,15 +197,25 @@ h2 {
     width: 100%;
 }
 .images__item {
-    max-width: 33%;
+    width: 33%;
+}
+.images__item img {
+    width: 100%;
 }
 
 .about .images__items {
     display: flex;
     gap: 25px;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+    cursor: pointer;
 }
-
+.about .images__items.dragging {
+    scroll-behavior: auto;
+    cursor: grab;
+}
 .about__pagination {
     display: flex;
     justify-content: center;
@@ -213,6 +223,7 @@ h2 {
 
 .images__prev,
 .images__next {
+    visibility: hidden;
     display: none;
 }
 .pagination_btn {
@@ -223,6 +234,7 @@ h2 {
     align-items: center;
     margin-top: 35px;
     margin-bottom: 35px;
+    cursor: pointer;
 }
 .pagination_btn:before {
     content: "";
@@ -232,8 +244,12 @@ h2 {
     border-radius: 50%;
     background-color: black;
 }
+.pagination_btn.active {
+    cursor: default;
+}
 .pagination_btn.active:before {
     background-color: #bb945f;
+    cursor: default;
 }
 .pagination_btn--show {
     display: none;
@@ -435,7 +451,7 @@ ul li {
     flex-direction: column;
 }
 .menu_right {
-    max-width: 438px;
+    /* max-width: 438px; */
     display: inline-flex;
     flex-direction: column;
 }
@@ -464,6 +480,9 @@ ul li {
     line-height: 40px;
     letter-spacing: 2px;
     text-transform: capitalize;
+}
+.menu_left .menu_item__name {
+    margin-right: 57px;
 }
 .menu_item__name {
     color: #000;
@@ -801,11 +820,11 @@ a:hover {
         max-width: 1240px;
         margin: 0 auto;
     }
-    .pagination_btn--show:last-child {
-        display: flex;
+    .images__item {
+        width: 30%;
     }
-    .images__items .images__item:last-child {
-        display: none;
+    .about .images__items {
+        gap: 45px;
     }
     .images__item img {
         width: 100%;
@@ -915,27 +934,31 @@ a:hover {
         visibility: visible;
         opacity: 1;
     }
-    .images__item {
-        max-width: 100%;
+    .about .images__items {
+        max-width: 450px;
     }
-    .images__items :not(:first-child) {
-        display: none;
+    .images__item {
+        width: 100%;
     }
     .pagination_btn--show {
         display: flex;
     }
-    .images__item {
-        padding: 0 3.5rem;
-    }
     .header__inner img {
         padding-right: 40px;
     }
+    .images__prev {
+        margin-right: 56px;
+    }
+    .images__next {
+        margin-left: 56px;
+        visibility: visible;
+    }
     .images__prev,
     .images__next {
-        display: block;
         background: transparent;
         cursor: pointer;
-        padding-top: 40px;
+        margin-top: 40px;
+        display: block;
     }
     .pagination_btn {
         margin-top: 20px;
@@ -987,9 +1010,6 @@ a:hover {
     }
     .welcome__content {
         background: lightgray 50% / cover no-repeat url("../img/welcome-768.jpg");
-    }
-    .menu_left .menu_item__name {
-        margin-right: 55px;
     }
 }
 @media (max-width: 700px) {
