@@ -15,6 +15,42 @@
 
 <body class="body-wrapper">
   <div class="body-container">
+    <section class="register">
+      <div class="register__inner">
+        <div class="register__title">REGISTER</div>
+        <div class="register__close-btn">
+          <img src="assets/svg/close_btn.svg" alt="">
+        </div>
+        <form action="" id="register-form" class="register-form" method="get">
+          <div class="register-form__content">
+            <div class="register-form__field">
+              <label class="register-form__label" for="firstname">First name</label>
+              <input class="register-form__input" id="firstname" name="firstname" type="text"
+                placeholder="Enter first name" required>
+            </div>
+            <div class="register-form__field">
+              <label class="register-form__label" for="lastname">Last name</label>
+              <input class="register-form__input" id="lastname" name="lastname" type="text"
+                placeholder="Enter last name" required>
+            </div>
+            <div class="register-form__field">
+              <label class="register-form__label" for="email">E-mail</label>
+              <input class="register-form__input" id="email" name="email" type="email" placeholder="Enter e-mail"
+                required>
+            </div>
+            <div class="register-form__field">
+              <label class="register-form__label" for="password">Password</label>
+              <input class="register-form__input" id="password" name="password" type="password"
+                placeholder="Enter pasword" minlength="8" required>
+            </div>
+          </div>
+          <button class="signup btn">Sign up</button>
+        </form>
+        <div class="register__footer-text">
+          <span>Already have an account? <a class="login" href="#!">Login</a></span>
+        </div>
+      </div>
+    </section>
     <header class="header">
       <div class="container">
         <div class="header__inner">
@@ -33,11 +69,12 @@
             </nav>
             <div class="profile">
               <img class="profile__img" src="assets/svg/icon_profile.svg" alt="">
+              <span class="profile-user profile-user--not-logged"></span>
               <div class="drop-menu-nav drop-menu-nav--no-auth">
                 <div class="drop-menu-nav__header">Profile</div>
                 <div class="drop-menu-nav__content">
-                  <div class="drop-menu-nav__text">Log In</div>
-                  <div class="drop-menu-nav__text">Register</div>
+                  <div class="drop-menu-nav__text" id="login">Log In</div>
+                  <div class="drop-menu-nav__text register-target">Register</div>
                 </div>
               </div>
               <div class="drop-menu-nav drop-menu-nav--auth">
@@ -564,13 +601,30 @@
                 <form class="libcard_table">
                   <div class="libcard_block">
                     <span class="libcard_table__lb">Brooklyn Public Library</span>
-                    <input class="libcard_table_inp" type="text" placeholder="Reader's name">
-                    <input class="libcard_table_inp" type="text" placeholder="Card number">
+                    <input class="libcard_table_inp" id="reader-name" type="text" placeholder="Reader's name">
+                    <input class="libcard_table_inp" id="reader-card-number" type="text" placeholder="Card number">
                   </div>
                   <button class="libcard_table_btm btn">Check the card</button>
+                  <div class="libcard-items libcard-items--not-logged">
+                    <div class="libcard-item">
+                      <div class="libcard-item__title">Visits</div>
+                      <img class="libcard-item__icon" src="assets/svg/visitor_icon.svg" alt="">
+                      <div class="libcard-item__counter" id="visits"></div>
+                    </div>
+                    <div class="libcard-item">
+                      <div class="libcard-item__title">Bonuses</div>
+                      <img class="libcard-item__icon" src="assets/svg/bonus_icon.svg" alt="">
+                      <div class="libcard-item__counter" id="bonuses"></div>
+                    </div>
+                    <div class="libcard-item">
+                      <div class="libcard-item__title">Books</div>
+                      <img class="libcard-item__icon" src="assets/svg/book_icon.svg" alt="">
+                      <div class="libcard-item__counter" id="books"></div>
+                    </div>
+                  </div>
                 </form>
               </div>
-              <div class="librarycard_request">
+              <div class="librarycard_request librarycard_request--not-logged" id="libcard-notlogin">
                 <p class="librarycard_request__p">Get a reader card</p>
                 <p class="librarycard_request__txt">
                   You will be able to see a reader card after
@@ -578,8 +632,18 @@
                   account
                 </p>
                 <div class="librarycard_request_btms">
-                  <button class="librarycard_request_btm btn">Sign Up</button>
+                  <button class="librarycard_request_btm btn register-target">Sign Up</button>
                   <button class="librarycard_request_btm btn">Log in</button>
+                </div>
+              </div>
+              <div class="librarycard_request" id="libcard-login">
+                <p class="librarycard_request__p">Visit your profile</p>
+                <p class="librarycard_request__txt">
+                  With a digital library card you get free access to the Library’s wide array of digital resources
+                  including e-books, databases, educational resources, and more.
+                </p>
+                <div class="librarycard_request_btms">
+                  <button class="librarycard_request_btm btn">Profile</button>
                 </div>
               </div>
             </div>

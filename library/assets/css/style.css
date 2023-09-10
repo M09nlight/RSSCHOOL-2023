@@ -141,14 +141,38 @@ h2 {
 .header__list li:last-child {
     padding-right: 0;
 }
-.header__inner .profile__img {
+.profile__img {
     vertical-align: middle;
     margin-left: 50px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    display: inline-block;
 }
-.header__inner .profile__img:hover {
+.profile__img:hover {
     transition: background-color 0.2s ease;
+}
+
+.profile__img--logged {
+    display: none;
+}
+.profile-user {
+    display: flex;
+    margin-left: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #bb945f;
+    font-size: 15px;
+    line-height: 20px;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    position: relative;
+}
+.profile-user--not-logged {
+    display: none;
 }
 .profile {
     position: relative;
@@ -202,6 +226,7 @@ h2 {
     font-size: 15px;
     font-weight: 400;
     line-height: 20px;
+    cursor: pointer;
 }
 
 .drop-menu-nav__text:not(:last-child) {
@@ -742,6 +767,11 @@ ul li {
     margin-top: 20px;
     margin-bottom: 5px;
 }
+.libcard_table_inp:disabled {
+    background-color: #ffffff;
+    color: #bb945f;
+}
+
 .libcard_block {
     box-sizing: border-box;
     display: inline-block;
@@ -771,6 +801,13 @@ ul li {
 }
 .librarycard_request {
     text-align: right;
+    display: none;
+}
+.librarycard_request.librarycard_request--not-logged {
+    display: block;
+}
+.librarycard_request.librarycard_request--logged {
+    display: block;
 }
 .librarycard_request__p {
     color: #000;
@@ -810,6 +847,40 @@ ul li {
     margin-left: 16px;
     transition-duration: 0.3s;
     cursor: pointer;
+}
+
+.libcard-items {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+.libcard-items--not-logged {
+    display: none;
+}
+.libcard-item {
+    display: flex;
+    flex-direction: column;
+}
+.libcard-item__title {
+    color: #000;
+    text-align: center;
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+}
+.libcard-item__icon {
+    width: 20px;
+    height: 21px;
+    margin: 0 auto;
+}
+.libcard-item__counter {
+    color: #000;
+    text-align: center;
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
 }
 .footer {
 }
@@ -912,6 +983,110 @@ a:hover {
 }
 .footer_item_icon:hover img {
     border-bottom: 1px solid #bb945f;
+}
+/* register */
+.register {
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(210, 210, 210, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    transition: all 0.5s ease;
+}
+.register--active-target {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+.register__close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: filter 0.3s;
+}
+.register__close-btn:hover {
+    filter: invert(58%) sepia(49%) saturate(347%) hue-rotate(355deg) brightness(94%) contrast(92%);
+    cursor: pointer;
+}
+.register__inner {
+    position: relative;
+    padding: 20px 25px;
+    width: 250px;
+    background: #fff;
+}
+.register__title {
+    color: #000;
+    text-align: center;
+    font-family: Forum;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+.register-form__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.register-form__field {
+}
+.register-form__label {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+}
+.register-form__input {
+    display: block;
+    margin-top: 10px;
+    height: 20px;
+    border: none;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    line-height: normal;
+    padding: 2px 5px;
+    outline: 1px solid #bb945f;
+
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+.signup {
+    width: 75px;
+    height: 30px;
+    flex-shrink: 0;
+    color: #0c0c0e;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 2px;
+}
+.register__footer-text {
+    margin-top: 10px;
+    color: #000;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+    font-family: Inter;
+    font-size: 10px;
+}
+.login {
+    color: #0c0c0e;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration-line: underline;
 }
 
 @media (max-width: 1240px) {
