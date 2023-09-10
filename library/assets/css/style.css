@@ -307,10 +307,10 @@ h2 {
     transition: 0.2s;
     border-radius: 50%;
 }
-.seasons input[type="radio"]:checked + .custom_checkbox::before {
+.seasons input[type="radio"]:checked + .custom_label .custom_checkbox::before {
     opacity: 1;
 }
-.seasons input[type="radio"]:checked ~ .season_text {
+.seasons input[type="radio"]:checked ~ .custom_label .season_text {
     text-stroke: 1px #000000;
     -webkit-text-stroke: 1px #000000;
 }
@@ -319,6 +319,9 @@ h2 {
 }
 .season_label:hover {
     cursor: pointer;
+}
+.custom_label {
+    display: flex;
 }
 ul li {
     font-size: 20px;
@@ -331,6 +334,31 @@ ul li {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    position: fixed;
+    right: -100%;
+    opacity: 0;
+    animation: fadeOut ease 2s;
+}
+.favorite__items--active-target {
+    position: static;
+    opacity: 1;
+    animation: fadeIn ease 2s;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 .favorite__items .item__staff_pick p {
     font-family: Forum;
@@ -832,6 +860,9 @@ a:hover {
     .images {
         justify-content: center;
     }
+    .favorite__items {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -963,9 +994,6 @@ a:hover {
     .pagination_btn {
         margin-top: 20px;
     }
-    .favorite__items {
-        justify-content: center;
-    }
     .coffee-shop__wrapper {
         padding-right: 19px;
     }
@@ -1010,6 +1038,16 @@ a:hover {
     }
     .welcome__content {
         background: lightgray 50% / cover no-repeat url("../img/welcome-768.jpg");
+    }
+    .seasons {
+        max-width: 100%;
+    }
+    .sticky {
+        position: sticky;
+        top: 20px;
+        background-color: rgba(200, 200, 200, 0.8);
+        padding: 10px;
+        z-index: 9999;
     }
 }
 @media (max-width: 700px) {
