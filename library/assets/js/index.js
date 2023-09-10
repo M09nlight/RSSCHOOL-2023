@@ -2,10 +2,14 @@ let profile = document.querySelector(".profile__img");
 let profileAuth = document.querySelector(".profile-user");
 let noAuthComponent = document.querySelector(".drop-menu-nav--no-auth");
 let authComponent = document.querySelector(".drop-menu-nav--auth");
-let loginBtn = document.querySelector("#login");
-let registerBtns = document.querySelectorAll(".register-target");
-let registerMenu = document.querySelector(".register");
-let registerCloseBtn = document.querySelector(".register__close-btn");
+
+let loginBtns = document.querySelectorAll(".login-btn");
+let loginMenu = document.querySelector("#login");
+let loginCloseBtn = document.querySelector(".login-close-btn");
+
+let registerBtns = document.querySelectorAll(".register-btn");
+let registerMenu = document.querySelector("#register");
+let registerCloseBtn = document.querySelector(".register-close-btn");
 
 let profileImg = document.querySelector(".profile__img");
 let profileUser = document.querySelector(".profile-user");
@@ -48,24 +52,47 @@ document.body.addEventListener("click", (e) => {
       authComponent.classList.toggle("drop-menu-nav--active-target");
     }
   }
-  if (!e.target.closest(".register__inner")) {
-    if (registerMenu.classList.contains("register--active-target")) {
-      registerMenu.classList.toggle("register--active-target");
+  if (!e.target.closest(".modal-log-reg--register")) {
+    if (registerMenu.classList.contains("modal-log-reg--active-target")) {
+      registerMenu.classList.toggle("modal-log-reg--active-target");
     }
   }
-  e.stopPropagation();
+  if (!e.target.closest(".modal-log-reg--login")) {
+    if (loginMenu.classList.contains("modal-log-reg--active-target")) {
+      loginMenu.classList.toggle("modal-log-reg--active-target");
+    }
+  }
+  //   e.stopPropagation();
+});
+
+loginBtns.forEach((logBtn) => {
+  logBtn.addEventListener("click", (e) => {
+    loginMenu.classList.toggle("modal-log-reg--active-target");
+    noAuthComponent.classList.remove("drop-menu-nav--active-target");
+    if (registerMenu.classList.contains("modal-log-reg--active-target")) {
+      registerMenu.classList.toggle("modal-log-reg--active-target");
+    }
+    e.stopPropagation();
+  });
 });
 
 registerBtns.forEach((regBtn) => {
   regBtn.addEventListener("click", (e) => {
-    registerMenu.classList.toggle("register--active-target");
-    noAuthComponent.classList.toggle("drop-menu-nav--active-target");
+    registerMenu.classList.toggle("modal-log-reg--active-target");
+    noAuthComponent.classList.remove("drop-menu-nav--active-target");
+    if (loginMenu.classList.contains("modal-log-reg--active-target")) {
+      loginMenu.classList.toggle("modal-log-reg--active-target");
+    }
     e.stopPropagation();
   });
 });
 
 registerCloseBtn.addEventListener("click", (event) => {
-  registerMenu.classList.toggle("register--active-target");
+  registerMenu.classList.toggle("modal-log-reg--active-target");
+});
+
+loginCloseBtn.addEventListener("click", (event) => {
+  loginMenu.classList.toggle("modal-log-reg--active-target");
 });
 
 function getRandomInt(min, max) {
@@ -94,7 +121,7 @@ regForm.addEventListener("submit", (e) => {
   profileUser.innerHTML =
     currentUser.firstname[0].toUpperCase() +
     currentUser.lastname[0].toUpperCase();
-  registerMenu.classList.toggle("register--active-target");
+  registerMenu.classList.toggle("modal-log-reg--active-target");
 
   updateProfileDropMenu(currentUser);
   updateDigitalCards(currentUser);
@@ -146,5 +173,11 @@ function updateProfileDropMenu(obj) {
   localStorageUsers = [...new Set(localStorageUsers)];
   localStorage.setItem("users", JSON.stringify(localStorageUsers));
 }
-if (isLogged) {
-}
+
+// document.addEventListener("scroll", () => {
+//   let stickySeasonTitle = document.querySelector(".seasons");
+//   console.log(window.scrollY);
+//   if (window.scrollY > 1450 && window.scrollY < 3800) {
+//     stickySeasonTitle.classList.add("sticky");
+//   } else stickySeasonTitle.classList.remove("sticky");
+// });
