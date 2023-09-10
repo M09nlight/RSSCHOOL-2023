@@ -2,6 +2,9 @@ let menu = document.querySelector(".header__nav");
 let burger = document.querySelector(".header__burger");
 
 burger.onclick = function (e) {
+  if (noAuthComponent.classList.contains("drop-menu-nav--active-target")) {
+    noAuthComponent.classList.toggle("drop-menu-nav--active-target");
+  }
   menu.classList.toggle("active");
   burger.classList.toggle("active");
   document.body.classList.toggle("lock");
