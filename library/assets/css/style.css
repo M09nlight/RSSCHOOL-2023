@@ -156,15 +156,13 @@ h2 {
     display: none;
 }
 .profile-user {
-    display: flex;
     margin-left: 50px;
     border-radius: 50%;
     background-color: #ffffff;
     color: #bb945f;
-    font-size: 15px;
+    font-size: 20px;
     line-height: 20px;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     user-select: none;
     width: 28px;
     height: 28px;
@@ -191,7 +189,7 @@ h2 {
     top: 40px;
     opacity: 0;
     z-index: 5;
-    transform: translateX(+100%);
+    transform: translateX(+220%);
     transition: all 0.5s ease;
     background: #fff;
 }
@@ -1019,6 +1017,7 @@ a:hover {
     position: relative;
     padding: 20px 25px;
     width: 250px;
+    height: 382px;
     background: #fff;
 }
 .register__title {
@@ -1035,6 +1034,7 @@ a:hover {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 .register-form__field {
 }
@@ -1223,7 +1223,8 @@ a:hover {
     .pagination_btn--show {
         display: flex;
     }
-    .header__inner img {
+    .header__inner img,
+    .profile-user {
         margin-right: 40px;
     }
     .images__prev {

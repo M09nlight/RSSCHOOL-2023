@@ -1,5 +1,7 @@
 let profile = document.querySelector(".profile__img");
+let profileAuth = document.querySelector(".profile-user");
 let noAuthComponent = document.querySelector(".drop-menu-nav--no-auth");
+let authComponent = document.querySelector(".drop-menu-nav--auth");
 let loginBtn = document.querySelector("#login");
 let registerBtns = document.querySelectorAll(".register-target");
 let registerMenu = document.querySelector(".register");
@@ -26,11 +28,24 @@ profile.addEventListener("click", (e) => {
   }
   e.stopPropagation();
 });
+profileAuth.addEventListener("click", (e) => {
+  authComponent.classList.toggle("drop-menu-nav--active-target");
+  if (burger.classList.contains("active")) {
+    menu.classList.toggle("active");
+    burger.classList.toggle("active");
+    document.body.classList.toggle("lock");
+  }
+  e.stopPropagation();
+});
 
 document.body.addEventListener("click", (e) => {
   if (!e.target.closest(".drop-menu-nav--active-target")) {
     if (noAuthComponent.classList.contains("drop-menu-nav--active-target")) {
       noAuthComponent.classList.toggle("drop-menu-nav--active-target");
+    } else if (
+      authComponent.classList.contains("drop-menu-nav--active-target")
+    ) {
+      authComponent.classList.toggle("drop-menu-nav--active-target");
     }
   }
   if (!e.target.closest(".register__inner")) {
@@ -76,9 +91,12 @@ regForm.addEventListener("submit", (e) => {
   profileImg.classList.toggle("profile__img--logged");
 
   profileUser.classList.toggle("profile-user--not-logged");
-  profileUser.innerHTML = currentUser.firstname[0] + currentUser.lastname[0];
+  profileUser.innerHTML =
+    currentUser.firstname[0].toUpperCase() +
+    currentUser.lastname[0].toUpperCase();
   registerMenu.classList.toggle("register--active-target");
 
+  updateProfileDropMenu(currentUser);
   updateDigitalCards(currentUser);
   getUsersData();
   updateUsersData(currentUser);
@@ -123,4 +141,10 @@ function updateUsersData(obj) {
   localStorageUsers = [...new Set(localStorageUsers)];
   localStorage.setItem("users", JSON.stringify(localStorageUsers));
 }
-if(isLogged ==)
+function updateProfileDropMenu(obj) {
+  localStorageUsers.push(obj);
+  localStorageUsers = [...new Set(localStorageUsers)];
+  localStorage.setItem("users", JSON.stringify(localStorageUsers));
+}
+if (isLogged) {
+}

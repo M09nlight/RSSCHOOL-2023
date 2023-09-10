@@ -1,6 +1,5 @@
 const seasonsNav = document.querySelectorAll(".custom_label");
 const favoriteItems = document.querySelectorAll(".favorite__items");
-console.log(seasonsNav);
 seasonsNav.forEach((season, index) => {
   season.addEventListener("click", () => {
     favoriteItems.forEach((s, index) => {

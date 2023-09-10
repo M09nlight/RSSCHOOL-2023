@@ -4,6 +4,8 @@ let burger = document.querySelector(".header__burger");
 burger.onclick = function (e) {
   if (noAuthComponent.classList.contains("drop-menu-nav--active-target")) {
     noAuthComponent.classList.toggle("drop-menu-nav--active-target");
+  } else if (authComponent.classList.contains("drop-menu-nav--active-target")) {
+    authComponent.classList.toggle("drop-menu-nav--active-target");
   }
   menu.classList.toggle("active");
   burger.classList.toggle("active");
