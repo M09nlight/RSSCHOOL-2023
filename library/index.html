@@ -15,68 +15,68 @@
 
 <body class="body-wrapper">
   <div class="body-container">
-    <section class="register">
-      <div class="register__inner">
-        <div class="register__title">REGISTER</div>
-        <div class="register__close-btn">
+    <section class="modal-log-reg" id="register">
+      <div class="modal-log-reg__inner modal-log-reg--register">
+        <div class="modal-log-reg__title">REGISTER</div>
+        <div class="register-close-btn">
           <img src="assets/svg/close_btn.svg" alt="">
         </div>
-        <form action="" id="register-form" class="register-form" method="get">
-          <div class="register-form__content">
-            <div class="register-form__field">
-              <label class="register-form__label" for="firstname">First name</label>
-              <input class="register-form__input" id="firstname" name="firstname" type="text"
+        <form action="" id="register-form" method="get">
+          <div class="modal-log-reg__content">
+            <div class="modal-log-reg__field">
+              <label class="modal-log-reg__label" for="firstname">First name</label>
+              <input class="modal-log-reg__input" id="firstname" name="firstname" type="text"
                 placeholder="Enter first name" required>
             </div>
-            <div class="register-form__field">
-              <label class="register-form__label" for="lastname">Last name</label>
-              <input class="register-form__input" id="lastname" name="lastname" type="text"
+            <div class="modal-log-reg__field">
+              <label class="modal-log-reg__label" for="lastname">Last name</label>
+              <input class="modal-log-reg__input" id="lastname" name="lastname" type="text"
                 placeholder="Enter last name" required>
             </div>
-            <div class="register-form__field">
-              <label class="register-form__label" for="email">E-mail</label>
-              <input class="register-form__input" id="email" name="email" type="email" placeholder="Enter e-mail"
+            <div class="modal-log-reg__field">
+              <label class="modal-log-reg__label" for="email">E-mail</label>
+              <input class="modal-log-reg__input" id="email" name="email" type="email" placeholder="Enter e-mail"
                 required>
             </div>
-            <div class="register-form__field">
-              <label class="register-form__label" for="password">Password</label>
-              <input class="register-form__input" id="password" name="password" type="password"
+            <div class="modal-log-reg__field">
+              <label class="modal-log-reg__label" for="password">Password</label>
+              <input class="modal-log-reg__input" id="password" name="password" type="password"
                 placeholder="Enter pasword" minlength="8" required>
             </div>
           </div>
           <button class="modal-btn btn">Sign up</button>
         </form>
-        <div class="register__footer-text">
-          <span>Already have an account? <a class="modal-alternative-btn href=" #!">Login</a></span>
+        <div class="modal-log-reg__footer-text">
+          <span>Already have an account? <a class="modal-alternative-btn login-btn" href="#!">Login</a></span>
         </div>
       </div>
     </section>
-    <!-- <section class="login">
-      <div class="login__inner">
-        <div class="login__title">Login</div>
-        <div class="login__close-btn">
+    <section class="modal-log-reg" id="login">
+      <div class="modal-log-reg__inner modal-log-reg--login">
+        <div class="modal-log-reg__title">Login</div>
+        <div class="login-close-btn">
           <img src="assets/svg/close_btn.svg" alt="">
         </div>
-        <form action="" id="login-form" class="login-form" method="get">
-          <div class="login-form__content">
-            <div class="login-form__field">
-              <label class="login-form__label" for="login-name">E-mail or readers card</label>
-              <input class="login-form__input" id="login-name" name="login-name" type="text"
+        <form action="" id="login-form" method="get">
+          <div class="modal-log-reg__content">
+            <div class="modal-log-reg__field">
+              <label class="modal-log-reg__label" for="login-name">E-mail or readers card</label>
+              <input class="modal-log-reg__input" id="login-name" name="login-name" type="text"
                 placeholder="Enter e-mail or readers card" required>
             </div>
-            <div class="login-form__field">
-              <label class="login-form__label" for="login-password">Password</label>
-              <input class="login-form__input" id="login-password" name="login-password" type="password"
+            <div class="modal-log-reg__field">
+              <label class="modal-log-reg__label" for="login-password">Password</label>
+              <input class="modal-log-reg__input" id="login-password" name="login-password" type="password"
                 placeholder="Enter pasword" minlength="8" required>
             </div>
           </div>
           <button class="modal-btn btn">Login</button>
         </form>
-        <div class="register__footer-text">
-          <span>Don’t have an account? <a class="modal-alternative-btn" href="#!">Register</a></span>
+        <div class="modal-log-reg__footer-text">
+          <span>Don’t have an account? <a class="modal-alternative-btn register-btn" href="#!">Register</a></span>
         </div>
       </div>
-    </section> -->
+    </section>
     <header class="header">
       <div class="container">
         <div class="header__inner">
@@ -99,8 +99,8 @@
               <div class="drop-menu-nav drop-menu-nav--no-auth">
                 <div class="drop-menu-nav__header">Profile</div>
                 <div class="drop-menu-nav__content">
-                  <div class="drop-menu-nav__text" id="login">Log In</div>
-                  <div class="drop-menu-nav__text register-target">Register</div>
+                  <div class="drop-menu-nav__text login-btn">Log In</div>
+                  <div class="drop-menu-nav__text register-btn">Register</div>
                 </div>
               </div>
               <div class="drop-menu-nav drop-menu-nav--auth">
@@ -658,7 +658,7 @@
                   account
                 </p>
                 <div class="librarycard_request_btms">
-                  <button class="librarycard_request_btm btn register-target">Sign Up</button>
+                  <button class="librarycard_request_btm btn register-btn">Sign Up</button>
                   <button class="librarycard_request_btm btn">Log in</button>
                 </div>
               </div>
