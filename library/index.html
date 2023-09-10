@@ -44,10 +44,36 @@
                 placeholder="Enter pasword" minlength="8" required>
             </div>
           </div>
-          <button class="signup btn">Sign up</button>
+          <button class="modal-btn btn">Sign up</button>
         </form>
         <div class="register__footer-text">
-          <span>Already have an account? <a class="login" href="#!">Login</a></span>
+          <span>Already have an account? <a class="modal-alternative-btn href=" #!">Login</a></span>
+        </div>
+      </div>
+    </section>
+    <section class="login">
+      <div class="login__inner">
+        <div class="login__title">Login</div>
+        <div class="login__close-btn">
+          <img src="assets/svg/close_btn.svg" alt="">
+        </div>
+        <form action="" id="login-form" class="login-form" method="get">
+          <div class="login-form__content">
+            <div class="login-form__field">
+              <label class="login-form__label" for="login-name">E-mail or readers card</label>
+              <input class="login-form__input" id="login-name" name="login-name" type="text"
+                placeholder="Enter e-mail or readers card" required>
+            </div>
+            <div class="login-form__field">
+              <label class="login-form__label" for="login-password">Password</label>
+              <input class="login-form__input" id="login-password" name="login-password" type="password"
+                placeholder="Enter pasword" minlength="8" required>
+            </div>
+          </div>
+          <button class="modal-btn btn">Login</button>
+        </form>
+        <div class="register__footer-text">
+          <span>Don’t have an account? <a class="modal-alternative-btn" href="#!">Register</a></span>
         </div>
       </div>
     </section>

@@ -1060,7 +1060,7 @@ a:hover {
     border-bottom: 2px solid transparent;
     transition: all 0.3s;
 }
-.signup {
+.modal-btn {
     width: 75px;
     height: 30px;
     flex-shrink: 0;
@@ -1079,7 +1079,7 @@ a:hover {
     font-family: Inter;
     font-size: 10px;
 }
-.login {
+.modal-alternative-btn {
     color: #0c0c0e;
     text-align: center;
     font-family: Inter;
