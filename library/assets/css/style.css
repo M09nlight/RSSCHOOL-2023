@@ -207,6 +207,9 @@ h2 {
     font-weight: 700;
     line-height: 20px; /* 133.333% */
 }
+.drop-menu-nav__header--logged {
+    font-size: 12px;
+}
 .drop-menu-nav__header::after {
     content: "";
     display: block;
@@ -1128,9 +1131,9 @@ a:hover {
     body.lock {
         overflow: hidden;
     }
-    .body-container {
+    /* .body-container {
         overflow: visible;
-    }
+    } */
     .drop-menu-nav {
         margin-right: 40px;
     }
@@ -1305,8 +1308,10 @@ a:hover {
         max-width: 100%;
     }
     .sticky {
-        position: sticky;
+        position: fixed;
         top: 20px;
+        right: 20px;
+        left: 20px;
         background-color: rgba(200, 200, 200, 0.8);
         padding: 10px;
         z-index: 9999;
