@@ -3,6 +3,8 @@ let profileAuth = document.querySelector(".profile-user");
 let noAuthComponent = document.querySelector(".drop-menu-nav--no-auth");
 let authComponent = document.querySelector(".drop-menu-nav--auth");
 
+let logoutBtn = document.querySelector(".logout-btn");
+
 let loginBtns = document.querySelectorAll(".login-btn");
 let loginMenu = document.querySelector("#login");
 let loginCloseBtn = document.querySelector(".login-close-btn");
@@ -16,12 +18,21 @@ let profileUser = document.querySelector(".profile-user");
 
 let digitReaderName = document.querySelector("#reader-name");
 let digitCardNumber = document.querySelector("#reader-card-number");
+let buyBtns = document.querySelectorAll(".buy-btn");
 
 const regForm = document.getElementById("register-form");
+const loginForm = document.getElementById("login-form");
 
 let localStorageUsers = [];
 let currentUser = {};
-let isLogged = false;
+let userAuthorized = localStorage.getItem("userAuthorized");
+
+if (userAuthorized) {
+  let user = JSON.parse(localStorage.getItem("currentUser"));
+  updateUserProfileIcon(user);
+  updateProfileDropMenu(user);
+  updateDigitalCards(user);
+}
 
 profile.addEventListener("click", (e) => {
   noAuthComponent.classList.toggle("drop-menu-nav--active-target");
@@ -42,7 +53,7 @@ profileAuth.addEventListener("click", (e) => {
   e.stopPropagation();
 });
 
-document.body.addEventListener("click", (e) => {
+document.body.addEventListener("pointerdown", (e) => {
   if (!e.target.closest(".drop-menu-nav--active-target")) {
     if (noAuthComponent.classList.contains("drop-menu-nav--active-target")) {
       noAuthComponent.classList.toggle("drop-menu-nav--active-target");
@@ -87,6 +98,16 @@ registerBtns.forEach((regBtn) => {
   });
 });
 
+logoutBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  localStorage.removeItem("userAuthorized");
+  localStorage.removeItem("currentUser");
+  userAuthorized = localStorage.getItem("userAuthorized");
+  updateUserProfileIcon(null);
+  updateProfileDropMenu(null);
+  updateDigitalCards(null);
+});
+
 registerCloseBtn.addEventListener("click", (event) => {
   registerMenu.classList.toggle("modal-log-reg--active-target");
 });
@@ -115,33 +136,77 @@ regForm.addEventListener("submit", (e) => {
     hasLibraryCard: false,
     books: [],
   };
-  profileImg.classList.toggle("profile__img--logged");
 
-  profileUser.classList.toggle("profile-user--not-logged");
-  profileUser.innerHTML =
-    currentUser.firstname[0].toUpperCase() +
-    currentUser.lastname[0].toUpperCase();
-  registerMenu.classList.toggle("modal-log-reg--active-target");
-
+  localStorage.setItem("userAuthorized", true);
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  userAuthorized = localStorage.getItem("userAuthorized");
+  updateUserProfileIcon(currentUser);
   updateProfileDropMenu(currentUser);
   updateDigitalCards(currentUser);
   getUsersData();
   updateUsersData(currentUser);
-  isLogged = true;
+  registerMenu.classList.toggle("modal-log-reg--active-target");
+  userAuthorized = localStorage.getItem("userAuthorized");
 });
 
-function updateDigitalCards(currentUser) {
-  digitReaderName.value = currentUser.firstname + " " + currentUser.lastname;
-  digitReaderName.setAttribute("disabled", "");
-  digitCardNumber.value = currentUser.cardNumber;
-  digitCardNumber.setAttribute("disabled", "");
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(loginForm);
+  let userForLogin = {
+    loginName: formData.get("login-name"),
+    loginPassword: formData.get("login-password"),
+  };
+  getUsersData();
 
-  document.querySelector(".libcard_table__name").textContent =
-    "Your Library card";
-  document.querySelector(".libcard_table_btm").style.display = "none";
-  document.querySelector("#visits").textContent = currentUser.visits;
-  document.querySelector("#bonuses").textContent = 1212;
-  document.querySelector("#books").textContent = 0;
+  let findedUser = checkRegistration(userForLogin);
+  if (findedUser) {
+    updateVisitsCount(findedUser);
+    localStorage.setItem("userAuthorized", true);
+    localStorage.setItem("currentUser", JSON.stringify(findedUser));
+    userAuthorized = localStorage.getItem("userAuthorized");
+
+    updateUserProfileIcon(findedUser);
+    updateProfileDropMenu(findedUser);
+    updateDigitalCards(findedUser);
+    loginMenu.classList.toggle("modal-log-reg--active-target");
+    console.log(findedUser);
+  }
+});
+
+function checkRegistration(userForLogin) {
+  let registeredUser = null;
+  localStorageUsers.forEach((user) => {
+    if (
+      (userForLogin.loginName == user.email ||
+        userForLogin.loginName == user.cardNumber) &&
+      userForLogin.loginPassword == user.password
+    ) {
+      registeredUser = user;
+    }
+  });
+  return registeredUser;
+}
+
+function updateDigitalCards(currentUser) {
+  if (userAuthorized) {
+    digitReaderName.value = currentUser.firstname + " " + currentUser.lastname;
+    digitReaderName.setAttribute("disabled", "");
+    digitCardNumber.value = currentUser.cardNumber;
+    digitCardNumber.setAttribute("disabled", "");
+
+    document.querySelector(".libcard_table__name").textContent =
+      "Your Library card";
+    document.querySelector(".libcard_table_btm").style.display = "none";
+    document.querySelector("#visits").textContent = currentUser.visits;
+    document.querySelector("#bonuses").textContent = 1212;
+    document.querySelector("#books").textContent = 0;
+  } else {
+    digitReaderName.value = "";
+    digitReaderName.removeAttribute("disabled");
+    digitCardNumber.value = "";
+    digitCardNumber.removeAttribute("disabled");
+    document.querySelector(".libcard_table_btm").removeAttribute("style");
+  }
   document
     .querySelector(".libcard-items")
     .classList.toggle("libcard-items--not-logged");
@@ -168,16 +233,47 @@ function updateUsersData(obj) {
   localStorageUsers = [...new Set(localStorageUsers)];
   localStorage.setItem("users", JSON.stringify(localStorageUsers));
 }
-function updateProfileDropMenu(obj) {
-  localStorageUsers.push(obj);
+
+function updateVisitsCount(obj) {
+  localStorageUsers.forEach((user) => {
+    let isEqual = JSON.stringify(user) === JSON.stringify(obj);
+    if (isEqual) {
+      user.visits++;
+    }
+  });
   localStorageUsers = [...new Set(localStorageUsers)];
   localStorage.setItem("users", JSON.stringify(localStorageUsers));
 }
 
-// document.addEventListener("scroll", () => {
-//   let stickySeasonTitle = document.querySelector(".seasons");
-//   console.log(window.scrollY);
-//   if (window.scrollY > 1450 && window.scrollY < 3800) {
-//     stickySeasonTitle.classList.add("sticky");
-//   } else stickySeasonTitle.classList.remove("sticky");
-// });
+function updateUserProfileIcon(currentUser) {
+  profileImg.classList.toggle("profile__img--logged");
+
+  profileUser.classList.toggle("profile-user--not-logged");
+  if (userAuthorized) {
+    profileUser.innerHTML =
+      currentUser.firstname[0].toUpperCase() +
+      currentUser.lastname[0].toUpperCase();
+  }
+}
+function updateProfileDropMenu(obj) {
+  if (userAuthorized) {
+    let profileTitle = document.querySelector(
+      ".drop-menu-nav--auth .drop-menu-nav__header"
+    );
+    profileAuth.setAttribute("title", obj.firstname + " " + obj.lastname);
+    profileTitle.classList.toggle("drop-menu-nav__header--logged");
+    profileTitle.textContent = obj.cardNumber;
+  } else {
+    authComponent.classList.remove("drop-menu-nav--active-target");
+    noAuthComponent.classList.remove("drop-menu-nav--active-target");
+  }
+}
+
+buyBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    if (!userAuthorized) {
+      loginMenu.classList.toggle("modal-log-reg--active-target");
+      e.stopPropagation();
+    }
+  });
+});

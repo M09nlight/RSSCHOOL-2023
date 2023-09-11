@@ -10,6 +10,7 @@
   <script src="assets/js/index.js" defer></script>
   <script src="assets/js/slider.js" defer></script>
   <script src="assets/js/favorites.js" defer></script>
+  <script src="assets/js/custom-fixed-header.js" defer></script>
   <title>Library</title>
 </head>
 
@@ -62,12 +63,12 @@
             <div class="modal-log-reg__field">
               <label class="modal-log-reg__label" for="login-name">E-mail or readers card</label>
               <input class="modal-log-reg__input" id="login-name" name="login-name" type="text"
-                placeholder="Enter e-mail or readers card" required>
+                placeholder="Enter e-mail or readers card" required autocomplete>
             </div>
             <div class="modal-log-reg__field">
               <label class="modal-log-reg__label" for="login-password">Password</label>
               <input class="modal-log-reg__input" id="login-password" name="login-password" type="password"
-                placeholder="Enter pasword" minlength="8" required>
+                placeholder="Enter pasword" minlength="8" required autocomplete>
             </div>
           </div>
           <button class="modal-btn btn">Login</button>
@@ -107,7 +108,7 @@
                 <div class="drop-menu-nav__header">Profile</div>
                 <div class="drop-menu-nav__content">
                   <div class="drop-menu-nav__text">My profile</div>
-                  <div class="drop-menu-nav__text">Log Out</div>
+                  <div class="drop-menu-nav__text logout-btn">Log Out</div>
                 </div>
               </div>
             </div>
@@ -177,7 +178,7 @@
               <h2>Favorites</h2>
             </div>
             <p class="favorite__season">Pick favorites of season</p>
-            <ul class="seasons sticky">
+            <ul class="seasons">
               <li>
                 <label class="season_label">
                   <input type="radio" name="seasons" value="Winter" checked>
@@ -231,7 +232,7 @@
                   light Sapphic romance, and a strong, complex protagonist. Not
                   for the faint of heart.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/winter_book_1.png" alt="">
               </div>
               <div class="item">
@@ -248,7 +249,7 @@
                   recovering from a breakup moves to a quaint town in upstate New
                   York and befriends a beautiful witch.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/winter_book_2.png" alt="">
               </div>
               <div class="item">
@@ -266,7 +267,7 @@
                   drama of soul into something of divine significance—an inspired
                   introduction to Dante's main themes.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/winter_book_3.png" alt="">
               </div>
               <div class="item">
@@ -282,7 +283,7 @@
                   her family) exploring how the Windsors have evolved and thrived
                   as the modern world has changed around them.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/winter_book_4.png" alt="">
               </div>
             </div>
@@ -301,7 +302,7 @@
                   of
                   innocence that is youth.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/spring_book_1.png" alt="">
               </div>
               <div class="item">
@@ -318,7 +319,7 @@
                   This memoir about the author's relationship with gun violence feels both expansive and intimate,
                   resulting in a lyrical indictment of the way things are.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/spring_book_2.png" alt="">
               </div>
               <div class="item">
@@ -335,7 +336,7 @@
                   A sardonic view of Silicon Valley culture, a meditation on race, and a journal of displacement and
                   belonging, all in one form-defying package of spare prose.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/spring_book_3.png" alt="">
               </div>
               <div class="item">
@@ -371,7 +372,7 @@
                   Ecuadoreans as they try to sue the ChevronTexaco company for damage their oil fields did to the Amazon
                   and her people
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/summer_book_1.png" alt="">
               </div>
               <div class="item">
@@ -388,7 +389,7 @@
                   experience of founding and leading Patagonia, Inc. Full title: Let My People Go Surfing: The Education
                   of a Reluctant Businessman, Including 10 More Years of Business Unusual.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/summer_book_2.png" alt="">
               </div>
               <div class="item">
@@ -404,7 +405,7 @@
                   This collection of bold and scathingly beautiful feminist poems imagines what comes after our current
                   age of environmental destruction, racism, sexism, and divisive politics.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/summer_book_3.png" alt="">
               </div>
               <div class="item">
@@ -421,7 +422,7 @@
                   Hawaiian woman gathers her four granddaughters together in an erotic tale of villains and dreamers,
                   queens and revolutionaries, lepers and healers.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/summer_book_4.png" alt="">
               </div>
             </div>
@@ -441,7 +442,7 @@
                   we
                   construct and communicate identity.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/autumn_book_1.png" alt="">
               </div>
               <div class="item">
@@ -459,7 +460,7 @@
                   of Smyrna, led an extraordinary rescue effort that saved a quarter of a million refugees from the
                   Armenian Genocide
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/autumn_book_2.png" alt="">
               </div>
               <div class="item">
@@ -476,7 +477,7 @@
                   better way to prepare for it than reading the biography of one of the game's all-time greatest
                   performers, the Man of Steal, Rickey Henderson?
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/autumn_book_3.png" alt="">
               </div>
               <div class="item">
@@ -492,7 +493,7 @@
                   Exes Tegan and Sara find themselves chained together by hairballs of codependency. A father and child
                   experience the shared trauma of giving birth to gods from their wounds.
                 </div>
-                <button class="btn">Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/autumn_book_4.png" alt="">
               </div>
             </div>
