@@ -16,33 +16,32 @@
 
 <body class="body-wrapper">
   <div class="body-container">
-    <section class="modal-log-reg" id="register">
-      <div class="modal-log-reg__inner modal-log-reg--register">
-        <div class="modal-log-reg__title">REGISTER</div>
-        <div class="register-close-btn">
+    <section class="modal" id="register">
+      <div class="modal__inner modal--register">
+        <div class="modal__log-reg-title">REGISTER</div>
+        <div class="modal__register-close-btn">
           <img src="assets/svg/close_btn.svg" alt="">
         </div>
         <form action="" id="register-form" method="get">
-          <div class="modal-log-reg__content">
-            <div class="modal-log-reg__field">
-              <label class="modal-log-reg__label" for="firstname">First name</label>
-              <input class="modal-log-reg__input" id="firstname" name="firstname" type="text"
-                placeholder="Enter first name" required>
-            </div>
-            <div class="modal-log-reg__field">
-              <label class="modal-log-reg__label" for="lastname">Last name</label>
-              <input class="modal-log-reg__input" id="lastname" name="lastname" type="text"
-                placeholder="Enter last name" required>
-            </div>
-            <div class="modal-log-reg__field">
-              <label class="modal-log-reg__label" for="email">E-mail</label>
-              <input class="modal-log-reg__input" id="email" name="email" type="email" placeholder="Enter e-mail"
+          <div class="modal__content">
+            <div class="modal__field">
+              <label class="modal__label" for="firstname">First name</label>
+              <input class="modal__input" id="firstname" name="firstname" type="text" placeholder="Enter first name"
                 required>
             </div>
-            <div class="modal-log-reg__field">
-              <label class="modal-log-reg__label" for="password">Password</label>
-              <input class="modal-log-reg__input" id="password" name="password" type="password"
-                placeholder="Enter pasword" minlength="8" required>
+            <div class="modal__field">
+              <label class="modal__label" for="lastname">Last name</label>
+              <input class="modal__input" id="lastname" name="lastname" type="text" placeholder="Enter last name"
+                required>
+            </div>
+            <div class="modal__field">
+              <label class="modal__label" for="email">E-mail</label>
+              <input class="modal__input" id="email" name="email" type="email" placeholder="Enter e-mail" required>
+            </div>
+            <div class="modal__field">
+              <label class="modal__label" for="password">Password</label>
+              <input class="modal__input" id="password" name="password" type="password" placeholder="Enter pasword"
+                minlength="8" required>
             </div>
           </div>
           <button class="modal-btn btn">Sign up</button>
@@ -52,22 +51,22 @@
         </div>
       </div>
     </section>
-    <section class="modal-log-reg" id="login">
-      <div class="modal-log-reg__inner modal-log-reg--login">
-        <div class="modal-log-reg__title">Login</div>
-        <div class="login-close-btn">
+    <section class="modal" id="login">
+      <div class="modal__inner modal--login">
+        <div class="modal__log-reg-title">Login</div>
+        <div class="modal__login-close-btn">
           <img src="assets/svg/close_btn.svg" alt="">
         </div>
         <form action="" id="login-form" method="get">
-          <div class="modal-log-reg__content">
-            <div class="modal-log-reg__field">
-              <label class="modal-log-reg__label" for="login-name">E-mail or readers card</label>
-              <input class="modal-log-reg__input" id="login-name" name="login-name" type="text"
+          <div class="modal__content">
+            <div class="modal__field">
+              <label class="modal__label" for="login-name">E-mail or readers card</label>
+              <input class="modal__input" id="login-name" name="login-name" type="text"
                 placeholder="Enter e-mail or readers card" required autocomplete>
             </div>
-            <div class="modal-log-reg__field">
-              <label class="modal-log-reg__label" for="login-password">Password</label>
-              <input class="modal-log-reg__input" id="login-password" name="login-password" type="password"
+            <div class="modal__field">
+              <label class="modal__label" for="login-password">Password</label>
+              <input class="modal__input" id="login-password" name="login-password" type="password"
                 placeholder="Enter pasword" minlength="8" required autocomplete>
             </div>
           </div>
@@ -79,47 +78,104 @@
       </div>
     </section>
     <section class="modal" id="profile">
-      <div class="modal__inner profile-modal">
-        <div class="profile-close-btn">
+      <div class="modal__inner modal--profile">
+        <div class="modal__profile-close-btn">
           <img src="assets/svg/close_btn.svg" alt="">
         </div>
-        <div class="profile-modal__left">
-          <div class="profile-modal__short-name">JS</div>
-          <div class="profile-modal__full-name">John Doe</div>
+        <div class="modal-profile__left">
+          <div class="modal-profile__short-name">JS</div>
+          <div class="modal-profile__full-name">John Doe</div>
         </div>
-        <div class="profile-modal__right">
-          <div class="profile-modal__title">My profile</div>
-          <div class="profile-modal__content">
-            <div class="profile-modal-items">
-              <div class="profile-modal-item">
-                <div class="profile-modal-item__title">Visits</div>
-                <img class="profile-modal-item__icon" src="assets/svg/visitor_icon.svg" alt="">
-                <div class="profile-modal-item__counter" id="visits"></div>
+        <div class="modal-profile__right">
+          <div class="modal-profile__title">My profile</div>
+          <div class="modal-profile__content">
+            <div class="modal-profile-items">
+              <div class="modal-profile-item">
+                <div class="modal-profile-item__title">Visits</div>
+                <img class="modal-profile-item__icon" src="assets/svg/visitor_icon.svg" alt="">
+                <div class="modal-profile-item__counter" id="visits"></div>
               </div>
-              <div class="profile-modal-item">
-                <div class="profile-modal-item__title">Bonuses</div>
-                <img class="profile-modal-item__icon" src="assets/svg/bonus_icon.svg" alt="">
-                <div class="profile-modal-item__counter" id="bonuses"></div>
+              <div class="modal-profile-item">
+                <div class="modal-profile-item__title">Bonuses</div>
+                <img class="modal-profile-item__icon" src="assets/svg/bonus_icon.svg" alt="">
+                <div class="modal-profile-item__counter" id="bonuses"></div>
               </div>
-              <div class="profile-modal-item">
-                <div class="profile-modal-item__title">Books</div>
-                <img class="profile-modal-item__icon" src="assets/svg/book_icon.svg" alt="">
-                <div class="profile-modal-item__counter" id="books"></div>
+              <div class="modal-profile-item">
+                <div class="modal-profile-item__title">Books</div>
+                <img class="modal-profile-item__icon" src="assets/svg/book_icon.svg" alt="">
+                <div class="modal-profile-item__counter" id="books"></div>
               </div>
             </div>
-            <p class="profile-modal__subtitle">Rented books</p>
-            <ul class="profile-modal-rended-books">
-              <li class="profile-modal-rended-books__item">The Last Queen, Clive Irving</li>
-              <li class="profile-modal-rended-books__item">Dominicana, Angie Cruz</li>
+            <p class="modal-profile__subtitle">Rented books</p>
+            <ul class="modal-profile-rended-books">
+              <li class="modal-profile-rended-books__item">The Last Queen, Clive Irving</li>
+              <li class="modal-profile-rended-books__item">Dominicana, Angie Cruz</li>
             </ul>
-            <p class="profile-modal__card-info">Card number <span class="profile-modal__card-number">
+            <p class="modal-profile__card-info">Card number <span class="modal-profile__card-number">
                 F00234030
-                <img class="profile-modal__copy-icon" src="assets/svg/icon_copy.svg" alt="">
+                <img class="modal-profile__copy-icon" src="assets/svg/icon_copy.svg" alt="">
               </span>
             <p class="alert">Coppied!</p>
             </p>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="modal" id="buy-card">
+      <div class="modal__inner modal--buy-card">
+        <div class="modal__buy-card-close-btn">
+          <img src="assets/svg/white_close_btn.svg" alt="">
+        </div>
+        <div class="modal-buy-card__title">Buy a library card
+        </div>
+        <form action="" id="buy-card-form" method="get">
+          <div class="modal-buy-card__wrapper">
+            <div class="modal-buy-card__content">
+              <div class="modal__content">
+                <div class="modal__field">
+                  <label class="modal__label" for="bank-card-number">Bank card number</label>
+                  <input class="modal__input" id="bank-card-number" name="bank-card-number" type="text" required
+                    minlength="16" maxlength="16">
+                </div>
+                <div class="modal__field">
+                  <label class="modal__label" for="expiration-code">Expiration code</label>
+                  <div class="modal__short-field">
+                    <input class="modal__input modal__input--w-45" id="expiration-code" name="expiration-code"
+                      minlength="2" maxlength="2" type="text" required>
+                    <input class="modal__input modal__input--w-45" name="expiration-code" type="text" minlength="2"
+                      maxlength="2" required>
+                  </div>
+                </div>
+                <div class="modal__field">
+                  <label class="modal__label" for="cvc">CVC</label>
+                  <input class="modal__input modal__input--w-45" id="cvc" name="cvc" type="password" minlength="3"
+                    maxlength="3" required>
+                </div>
+                <div class="modal__field">
+                  <label class="modal__label" for="cardholder-name">Cardholder name</label>
+                  <input class="modal__input" id="cardholder-name" name="cardholder-name" type="text" required>
+                </div>
+                <div class="modal__field">
+                  <label class="modal__label" for="postal-code">Postal code</label>
+                  <input class="modal__input" id="postal-code" name="postal-code" type="text" required>
+                </div>
+                <div class="modal__field">
+                  <label class="modal__label" for="city">City / Town</label>
+                  <input class="modal__input" id="city" name="city" type="text" required>
+                </div>
+              </div>
+              <div class="modal-buy-card__buy-block">
+                <button class="modal-btn btn">Buy</button>
+                <span class="modal-buy-card__price">$ 25.00</span>
+              </div>
+            </div>
+            <div class="modal-buy-card__description">
+              If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital
+              library card right now using this online form. Visitors to New York State can also use this form to apply
+              for a temporary card.
+            </div>
+          </div>
+        </form>
       </div>
     </section>
     <header class="header">
@@ -397,7 +453,7 @@
                   America. Her marriage is an opportunity for her family to eventually immigrate. For fans of Isabel
                   Allende and Julia Alvarez.
                 </div>
-                <button class="btn" disabled>Buy</button>
+                <button class="btn buy-btn">Buy</button>
                 <img src="assets/img/spring_book_4.png" alt="">
               </div>
             </div>

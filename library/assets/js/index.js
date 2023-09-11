@@ -7,24 +7,27 @@ let logoutBtn = document.querySelector(".logout-btn");
 
 let profileBtns = document.querySelectorAll(".profile-btn");
 let profileMenu = document.querySelector("#profile");
-let profileCloseBtn = document.querySelector(".profile-close-btn");
+let profileCloseBtn = document.querySelector(".modal__profile-close-btn");
 
 let loginBtns = document.querySelectorAll(".login-btn");
 let loginMenu = document.querySelector("#login");
-let loginCloseBtn = document.querySelector(".login-close-btn");
+let loginCloseBtn = document.querySelector(".modal__login-close-btn");
 
 let registerBtns = document.querySelectorAll(".register-btn");
 let registerMenu = document.querySelector("#register");
-let registerCloseBtn = document.querySelector(".register-close-btn");
+let registerCloseBtn = document.querySelector(".modal__register-close-btn");
+
+let buyCardBtns = document.querySelectorAll(".buy-btn");
+let buyCardMenu = document.querySelector("#buy-card");
+let buyCardCloseBtn = document.querySelector(".modal__buy-card-close-btn");
 
 let profileImg = document.querySelector(".profile__img");
 let profileUser = document.querySelector(".profile-user");
-let profileShortName = document.querySelector(".profile-modal__short-name");
-let profileFullName = document.querySelector(".profile-modal__full-name");
+let profileShortName = document.querySelector(".modal-profile__short-name");
+let profileFullName = document.querySelector(".modal-profile__full-name");
 
 let digitReaderName = document.querySelector("#reader-name");
 let digitCardNumber = document.querySelector("#reader-card-number");
-let buyBtns = document.querySelectorAll(".buy-btn");
 
 const regForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
@@ -69,19 +72,24 @@ document.body.addEventListener("pointerdown", (e) => {
       authComponent.classList.toggle("drop-menu-nav--active-target");
     }
   }
-  if (!e.target.closest(".modal-log-reg--register")) {
+  if (!e.target.closest(".modal--register")) {
     if (registerMenu.classList.contains("modal--active-target")) {
       registerMenu.classList.toggle("modal--active-target");
     }
   }
-  if (!e.target.closest(".modal-log-reg--login")) {
+  if (!e.target.closest(".modal--login")) {
     if (loginMenu.classList.contains("modal--active-target")) {
       loginMenu.classList.toggle("modal--active-target");
     }
   }
-  if (!e.target.closest(".profile-modal")) {
+  if (!e.target.closest(".modal--profile")) {
     if (profileMenu.classList.contains("modal--active-target")) {
       profileMenu.classList.toggle("modal--active-target");
+    }
+  }
+  if (!e.target.closest(".modal--buy-card")) {
+    if (buyCardMenu.classList.contains("modal--active-target")) {
+      buyCardMenu.classList.toggle("modal--active-target");
     }
   }
   //   e.stopPropagation();
@@ -144,6 +152,10 @@ loginCloseBtn.addEventListener("click", (event) => {
 
 profileCloseBtn.addEventListener("click", (event) => {
   profileMenu.classList.toggle("modal--active-target");
+});
+
+buyCardCloseBtn.addEventListener("click", (event) => {
+  buyCardMenu.classList.toggle("modal--active-target");
 });
 
 function getRandomInt(min, max) {
@@ -305,18 +317,18 @@ function updateProfileDropMenu(obj) {
   }
 }
 
-buyBtns.forEach((btn) => {
+buyCardBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     if (!userAuthorized) {
       loginMenu.classList.toggle("modal--active-target");
       e.stopPropagation();
-    }
+    } else buyCardMenu.classList.toggle("modal--active-target");
   });
 });
 
-let profileCardNumber = document.querySelector(".profile-modal__card-info");
+let profileCardNumber = document.querySelector(".modal-profile__card-info");
 profileCardNumber.addEventListener("click", () => {
-  let cardNumber = document.querySelector(".profile-modal__card-number");
+  let cardNumber = document.querySelector(".modal-profile__card-number");
   navigator.clipboard.writeText(cardNumber.textContent);
   let alert = document.querySelector(".alert");
   alert.classList.add("alert--show");
