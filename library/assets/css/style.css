@@ -1001,20 +1001,23 @@ a:hover {
     z-index: 9999;
     transition: all 0.5s ease;
 }
-.modal-log-reg--active-target {
+.modal--active-target,
+.modal.modal--active-target {
     visibility: visible;
     opacity: 1;
     transition: all 0.5s ease;
 }
 .register-close-btn,
-.login-close-btn {
+.login-close-btn,
+.profile-close-btn {
     position: absolute;
     top: 15px;
     right: 15px;
     transition: filter 0.3s;
 }
 .register-close-btn:hover,
-.login-close-btn:hover {
+.login-close-btn:hover,
+.profile-close-btn:hover {
     filter: invert(58%) sepia(49%) saturate(347%) hue-rotate(355deg) brightness(94%) contrast(92%);
     cursor: pointer;
 }
@@ -1101,6 +1104,179 @@ a:hover {
     cursor: pointer;
 }
 
+/* modal profile */
+
+.modal {
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(210, 210, 210, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    transition: all 0.5s ease;
+}
+.modal__inner {
+    position: relative;
+    background: #fff;
+    width: 600px;
+    height: 400px;
+    display: flex;
+}
+.profile-modal__left {
+    background-color: #0c0c0e;
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.profile-modal__short-name {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    color: #bb945f;
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-modal__full-name {
+    width: 120px;
+    min-height: 30px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px; /* 100% */
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.profile-modal__right {
+    padding: 40px 20px;
+}
+.profile-modal__content {
+}
+.profile-modal__title {
+    color: #000;
+    font-family: Forum;
+    font-size: 40px;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+.profile-modal__subtitle {
+    color: #0c0c0e;
+    font-size: 25px;
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.profile-modal-rended-books {
+    margin-bottom: 40px;
+}
+.profile-modal-rended-books__item {
+    position: relative;
+    padding-left: 10px;
+    color: #000;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+.profile-modal-rended-books__item:not(:last-child) {
+    margin-bottom: 10px;
+}
+.profile-modal-rended-books__item::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.profile-modal__card-info {
+    color: #0c0c0e;
+    font-size: 20px;
+    line-height: 20px;
+}
+.profile-modal__card-number {
+    color: #bb945f;
+    display: inline-flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.profile-modal__card-number:hover {
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+.profile-modal__copy-icon {
+    margin-left: 15px;
+}
+.profile-modal-items {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+.profile-modal-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.profile-modal-item__title {
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+}
+.profile-modal-item__icon {
+    width: 20px;
+    height: 21px;
+    margin: 0 auto;
+}
+.profile-modal-item__counter {
+    color: #000;
+    text-align: center;
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+}
+.alert {
+    padding: 2px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: 1px solid #bb945f;
+    color: #bb945f;
+    transition: all 0.5s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+}
+.alert--show {
+    visibility: visible;
+    opacity: 1;
+}
 @media (max-width: 1240px) {
     .container {
         max-width: 1240px;

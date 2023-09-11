@@ -5,6 +5,10 @@ let authComponent = document.querySelector(".drop-menu-nav--auth");
 
 let logoutBtn = document.querySelector(".logout-btn");
 
+let profileBtns = document.querySelectorAll(".profile-btn");
+let profileMenu = document.querySelector("#profile");
+let profileCloseBtn = document.querySelector(".profile-close-btn");
+
 let loginBtns = document.querySelectorAll(".login-btn");
 let loginMenu = document.querySelector("#login");
 let loginCloseBtn = document.querySelector(".login-close-btn");
@@ -15,6 +19,8 @@ let registerCloseBtn = document.querySelector(".register-close-btn");
 
 let profileImg = document.querySelector(".profile__img");
 let profileUser = document.querySelector(".profile-user");
+let profileShortName = document.querySelector(".profile-modal__short-name");
+let profileFullName = document.querySelector(".profile-modal__full-name");
 
 let digitReaderName = document.querySelector("#reader-name");
 let digitCardNumber = document.querySelector("#reader-card-number");
@@ -28,10 +34,10 @@ let currentUser = {};
 let userAuthorized = localStorage.getItem("userAuthorized");
 
 if (userAuthorized) {
-  let user = JSON.parse(localStorage.getItem("currentUser"));
-  updateUserProfileIcon(user);
-  updateProfileDropMenu(user);
-  updateDigitalCards(user);
+  currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  updateUserProfileIcon(currentUser);
+  updateProfileDropMenu(currentUser);
+  updateDigitalCards(currentUser);
 }
 
 profile.addEventListener("click", (e) => {
@@ -64,13 +70,18 @@ document.body.addEventListener("pointerdown", (e) => {
     }
   }
   if (!e.target.closest(".modal-log-reg--register")) {
-    if (registerMenu.classList.contains("modal-log-reg--active-target")) {
-      registerMenu.classList.toggle("modal-log-reg--active-target");
+    if (registerMenu.classList.contains("modal--active-target")) {
+      registerMenu.classList.toggle("modal--active-target");
     }
   }
   if (!e.target.closest(".modal-log-reg--login")) {
-    if (loginMenu.classList.contains("modal-log-reg--active-target")) {
-      loginMenu.classList.toggle("modal-log-reg--active-target");
+    if (loginMenu.classList.contains("modal--active-target")) {
+      loginMenu.classList.toggle("modal--active-target");
+    }
+  }
+  if (!e.target.closest(".profile-modal")) {
+    if (profileMenu.classList.contains("modal--active-target")) {
+      profileMenu.classList.toggle("modal--active-target");
     }
   }
   //   e.stopPropagation();
@@ -78,21 +89,36 @@ document.body.addEventListener("pointerdown", (e) => {
 
 loginBtns.forEach((logBtn) => {
   logBtn.addEventListener("click", (e) => {
-    loginMenu.classList.toggle("modal-log-reg--active-target");
+    loginMenu.classList.toggle("modal--active-target");
     noAuthComponent.classList.remove("drop-menu-nav--active-target");
-    if (registerMenu.classList.contains("modal-log-reg--active-target")) {
-      registerMenu.classList.toggle("modal-log-reg--active-target");
+    if (registerMenu.classList.contains("modal--active-target")) {
+      registerMenu.classList.toggle("modal--active-target");
     }
+    e.stopPropagation();
+  });
+});
+
+profileBtns.forEach((pBtn) => {
+  pBtn.addEventListener("click", (e) => {
+    if (userAuthorized) {
+      profileShortName.innerHTML =
+        currentUser.firstname[0].toUpperCase() +
+        currentUser.lastname[0].toUpperCase();
+      profileFullName.innerHTML =
+        currentUser.firstname + " " + currentUser.lastname;
+    }
+    profileMenu.classList.toggle("modal--active-target");
+    authComponent.classList.remove("drop-menu-nav--active-target");
     e.stopPropagation();
   });
 });
 
 registerBtns.forEach((regBtn) => {
   regBtn.addEventListener("click", (e) => {
-    registerMenu.classList.toggle("modal-log-reg--active-target");
+    registerMenu.classList.toggle("modal--active-target");
     noAuthComponent.classList.remove("drop-menu-nav--active-target");
-    if (loginMenu.classList.contains("modal-log-reg--active-target")) {
-      loginMenu.classList.toggle("modal-log-reg--active-target");
+    if (loginMenu.classList.contains("modal--active-target")) {
+      loginMenu.classList.toggle("modal--active-target");
     }
     e.stopPropagation();
   });
@@ -109,11 +135,15 @@ logoutBtn.addEventListener("click", (e) => {
 });
 
 registerCloseBtn.addEventListener("click", (event) => {
-  registerMenu.classList.toggle("modal-log-reg--active-target");
+  registerMenu.classList.toggle("modal--active-target");
 });
 
 loginCloseBtn.addEventListener("click", (event) => {
-  loginMenu.classList.toggle("modal-log-reg--active-target");
+  loginMenu.classList.toggle("modal--active-target");
+});
+
+profileCloseBtn.addEventListener("click", (event) => {
+  profileMenu.classList.toggle("modal--active-target");
 });
 
 function getRandomInt(min, max) {
@@ -145,7 +175,7 @@ regForm.addEventListener("submit", (e) => {
   updateDigitalCards(currentUser);
   getUsersData();
   updateUsersData(currentUser);
-  registerMenu.classList.toggle("modal-log-reg--active-target");
+  registerMenu.classList.toggle("modal--active-target");
   userAuthorized = localStorage.getItem("userAuthorized");
 });
 
@@ -164,12 +194,12 @@ loginForm.addEventListener("submit", (e) => {
     localStorage.setItem("userAuthorized", true);
     localStorage.setItem("currentUser", JSON.stringify(findedUser));
     userAuthorized = localStorage.getItem("userAuthorized");
+    currentUser = findedUser;
 
     updateUserProfileIcon(findedUser);
     updateProfileDropMenu(findedUser);
     updateDigitalCards(findedUser);
-    loginMenu.classList.toggle("modal-log-reg--active-target");
-    console.log(findedUser);
+    loginMenu.classList.toggle("modal--active-target");
   }
 });
 
@@ -197,9 +227,15 @@ function updateDigitalCards(currentUser) {
     document.querySelector(".libcard_table__name").textContent =
       "Your Library card";
     document.querySelector(".libcard_table_btm").style.display = "none";
-    document.querySelector("#visits").textContent = currentUser.visits;
-    document.querySelector("#bonuses").textContent = 1212;
-    document.querySelector("#books").textContent = 0;
+    document.querySelectorAll("#visits").forEach((elem) => {
+      elem.textContent = currentUser.visits;
+    });
+    document.querySelectorAll("#bonuses").forEach((elem) => {
+      elem.textContent = 1240;
+    });
+    document.querySelectorAll("#books").forEach((elem) => {
+      elem.textContent = currentUser.books.length;
+    });
   } else {
     digitReaderName.value = "";
     digitReaderName.removeAttribute("disabled");
@@ -272,8 +308,19 @@ function updateProfileDropMenu(obj) {
 buyBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     if (!userAuthorized) {
-      loginMenu.classList.toggle("modal-log-reg--active-target");
+      loginMenu.classList.toggle("modal--active-target");
       e.stopPropagation();
     }
   });
+});
+
+let profileCardNumber = document.querySelector(".profile-modal__card-info");
+profileCardNumber.addEventListener("click", () => {
+  let cardNumber = document.querySelector(".profile-modal__card-number");
+  navigator.clipboard.writeText(cardNumber.textContent);
+  let alert = document.querySelector(".alert");
+  alert.classList.add("alert--show");
+  setTimeout(() => {
+    alert.classList.remove("alert--show");
+  }, 500);
 });

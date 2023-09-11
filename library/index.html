@@ -78,6 +78,50 @@
         </div>
       </div>
     </section>
+    <section class="modal" id="profile">
+      <div class="modal__inner profile-modal">
+        <div class="profile-close-btn">
+          <img src="assets/svg/close_btn.svg" alt="">
+        </div>
+        <div class="profile-modal__left">
+          <div class="profile-modal__short-name">JS</div>
+          <div class="profile-modal__full-name">John Doe</div>
+        </div>
+        <div class="profile-modal__right">
+          <div class="profile-modal__title">My profile</div>
+          <div class="profile-modal__content">
+            <div class="profile-modal-items">
+              <div class="profile-modal-item">
+                <div class="profile-modal-item__title">Visits</div>
+                <img class="profile-modal-item__icon" src="assets/svg/visitor_icon.svg" alt="">
+                <div class="profile-modal-item__counter" id="visits"></div>
+              </div>
+              <div class="profile-modal-item">
+                <div class="profile-modal-item__title">Bonuses</div>
+                <img class="profile-modal-item__icon" src="assets/svg/bonus_icon.svg" alt="">
+                <div class="profile-modal-item__counter" id="bonuses"></div>
+              </div>
+              <div class="profile-modal-item">
+                <div class="profile-modal-item__title">Books</div>
+                <img class="profile-modal-item__icon" src="assets/svg/book_icon.svg" alt="">
+                <div class="profile-modal-item__counter" id="books"></div>
+              </div>
+            </div>
+            <p class="profile-modal__subtitle">Rented books</p>
+            <ul class="profile-modal-rended-books">
+              <li class="profile-modal-rended-books__item">The Last Queen, Clive Irving</li>
+              <li class="profile-modal-rended-books__item">Dominicana, Angie Cruz</li>
+            </ul>
+            <p class="profile-modal__card-info">Card number <span class="profile-modal__card-number">
+                F00234030
+                <img class="profile-modal__copy-icon" src="assets/svg/icon_copy.svg" alt="">
+              </span>
+            <p class="alert">Coppied!</p>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
     <header class="header">
       <div class="container">
         <div class="header__inner">
@@ -107,7 +151,7 @@
               <div class="drop-menu-nav drop-menu-nav--auth">
                 <div class="drop-menu-nav__header">Profile</div>
                 <div class="drop-menu-nav__content">
-                  <div class="drop-menu-nav__text">My profile</div>
+                  <div class="drop-menu-nav__text profile-btn">My profile</div>
                   <div class="drop-menu-nav__text logout-btn">Log Out</div>
                 </div>
               </div>
@@ -670,7 +714,7 @@
                   including e-books, databases, educational resources, and more.
                 </p>
                 <div class="librarycard_request_btms">
-                  <button class="librarycard_request_btm btn">Profile</button>
+                  <button class="librarycard_request_btm btn profile-btn">Profile</button>
                 </div>
               </div>
             </div>
