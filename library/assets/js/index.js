@@ -31,16 +31,46 @@ let digitCardNumber = document.querySelector("#reader-card-number");
 
 const regForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
+const librarycardForm = document.getElementById("librarycard-form");
+const buyCardForm = document.getElementById("buy-card-form");
 
 let localStorageUsers = [];
 let currentUser = {};
 let userAuthorized = localStorage.getItem("userAuthorized");
+let readerAccess = false;
 
 if (userAuthorized) {
   currentUser = JSON.parse(localStorage.getItem("currentUser"));
   updateUserProfileIcon(currentUser);
   updateProfileDropMenu(currentUser);
   updateDigitalCards(currentUser);
+  updateRendedBooks();
+}
+function updateRendedBooks() {
+  if (userAuthorized) {
+    if (currentUser.books.length) {
+      currentUser.books.forEach((book) => {
+        buyCardBtns[book.id].classList.add("own");
+        buyCardBtns[book.id].textContent = "Own";
+      });
+    }
+    if (currentUser.books.length) {
+      let ul = document.querySelector(".modal-profile-rended-books");
+      currentUser.books.forEach((book) => {
+        let li = document.createElement("li");
+        const authorFormatted = book.bookAuthor.replace(/^By\s+/i, "");
+        let bookFullName = book.bookName + ", " + authorFormatted;
+        li.textContent = bookFullName;
+        li.classList.add("modal-profile-rended-books__item");
+        ul.appendChild(li);
+      });
+    }
+  } else {
+    buyCardBtns.forEach((card) => {
+      card.classList.remove("own");
+      card.textContent = "Buy";
+    });
+  }
 }
 
 profile.addEventListener("click", (e) => {
@@ -140,6 +170,7 @@ logoutBtn.addEventListener("click", (e) => {
   updateUserProfileIcon(null);
   updateProfileDropMenu(null);
   updateDigitalCards(null);
+  updateRendedBooks();
 });
 
 registerCloseBtn.addEventListener("click", (event) => {
@@ -165,7 +196,7 @@ function getRandomInt(min, max) {
 regForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(regForm);
-  let cardNumber = getRandomInt(10000000000, 99999999999)
+  let cardNumber = getRandomInt(10000000000, 59999999999)
     .toString(16)
     .toUpperCase();
   currentUser = {
@@ -179,16 +210,10 @@ regForm.addEventListener("submit", (e) => {
     books: [],
   };
 
-  localStorage.setItem("userAuthorized", true);
-  localStorage.setItem("currentUser", JSON.stringify(currentUser));
-  userAuthorized = localStorage.getItem("userAuthorized");
-  updateUserProfileIcon(currentUser);
-  updateProfileDropMenu(currentUser);
-  updateDigitalCards(currentUser);
   getUsersData();
   updateUsersData(currentUser);
   registerMenu.classList.toggle("modal--active-target");
-  userAuthorized = localStorage.getItem("userAuthorized");
+  regForm.reset();
 });
 
 loginForm.addEventListener("submit", (e) => {
@@ -204,14 +229,40 @@ loginForm.addEventListener("submit", (e) => {
   if (findedUser) {
     updateVisitsCount(findedUser);
     localStorage.setItem("userAuthorized", true);
-    localStorage.setItem("currentUser", JSON.stringify(findedUser));
     userAuthorized = localStorage.getItem("userAuthorized");
     currentUser = findedUser;
 
+    updateRendedBooks();
     updateUserProfileIcon(findedUser);
     updateProfileDropMenu(findedUser);
     updateDigitalCards(findedUser);
     loginMenu.classList.toggle("modal--active-target");
+  }
+});
+
+buyCardForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const buyCardData = new FormData(buyCardForm);
+  getUsersData();
+  updateCardCredentials(currentUser);
+  currentUser.hasLibraryCard = true;
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  buyCardMenu.classList.toggle("modal--active-target");
+});
+
+librarycardForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const librarycardData = new FormData(librarycardForm);
+  let reader = {
+    name: librarycardData.get("reader-name"),
+    cardNumber: librarycardData.get("reader-card-number"),
+  };
+  getUsersData();
+
+  let findedUser = checkReader(reader);
+  if (findedUser) {
+    readerAccess = true;
+    updateDigitalCards(findedUser);
   }
 });
 
@@ -229,41 +280,73 @@ function checkRegistration(userForLogin) {
   return registeredUser;
 }
 
+function checkReader(reader) {
+  let registeredUser = null;
+  localStorageUsers.forEach((user) => {
+    if (
+      reader.name == user.firstname + " " + user.lastname &&
+      reader.cardNumber == user.cardNumber
+    ) {
+      registeredUser = user;
+    }
+  });
+  return registeredUser;
+}
+
 function updateDigitalCards(currentUser) {
   if (userAuthorized) {
-    digitReaderName.value = currentUser.firstname + " " + currentUser.lastname;
-    digitReaderName.setAttribute("disabled", "");
-    digitCardNumber.value = currentUser.cardNumber;
-    digitCardNumber.setAttribute("disabled", "");
-
-    document.querySelector(".libcard_table__name").textContent =
-      "Your Library card";
-    document.querySelector(".libcard_table_btm").style.display = "none";
-    document.querySelectorAll("#visits").forEach((elem) => {
-      elem.textContent = currentUser.visits;
-    });
-    document.querySelectorAll("#bonuses").forEach((elem) => {
-      elem.textContent = 1240;
-    });
-    document.querySelectorAll("#books").forEach((elem) => {
-      elem.textContent = currentUser.books.length;
-    });
+    setDigitalCardFormData(currentUser);
+  } else if (readerAccess) {
+    setDigitalCardFormData(currentUser);
+    setTimeout(() => {
+      removeDigitalCardFormData();
+      document
+        .querySelector(".libcard-items")
+        .classList.toggle("libcard-items--not-logged");
+      readerAccess = false;
+    }, 10000);
   } else {
-    digitReaderName.value = "";
-    digitReaderName.removeAttribute("disabled");
-    digitCardNumber.value = "";
-    digitCardNumber.removeAttribute("disabled");
-    document.querySelector(".libcard_table_btm").removeAttribute("style");
+    removeDigitalCardFormData();
   }
   document
     .querySelector(".libcard-items")
     .classList.toggle("libcard-items--not-logged");
-  document
-    .querySelector("#libcard-notlogin")
-    .classList.toggle("librarycard_request--not-logged");
-  document
-    .querySelector("#libcard-login")
-    .classList.toggle("librarycard_request--logged");
+  if (!readerAccess) {
+    document
+      .querySelector("#libcard-notlogin")
+      .classList.toggle("librarycard_request--not-logged");
+    document
+      .querySelector("#libcard-login")
+      .classList.toggle("librarycard_request--logged");
+  }
+}
+
+function setDigitalCardFormData(currentUser) {
+  digitReaderName.value = currentUser.firstname + " " + currentUser.lastname;
+  digitReaderName.setAttribute("disabled", "");
+  digitCardNumber.value = currentUser.cardNumber;
+  digitCardNumber.setAttribute("disabled", "");
+
+  document.querySelector(".libcard_table__name").textContent =
+    "Your Library card";
+  document.querySelector(".libcard_table_btm").style.display = "none";
+  document.querySelectorAll(".visits").forEach((elem) => {
+    elem.textContent = currentUser.visits;
+  });
+  document.querySelectorAll(".bonuses").forEach((elem) => {
+    elem.textContent = 1240;
+  });
+  document.querySelectorAll(".books").forEach((elem) => {
+    elem.textContent = currentUser.books.length;
+  });
+}
+
+function removeDigitalCardFormData() {
+  digitReaderName.value = "";
+  digitReaderName.removeAttribute("disabled");
+  digitCardNumber.value = "";
+  digitCardNumber.removeAttribute("disabled");
+  document.querySelector(".libcard_table_btm").removeAttribute("style");
 }
 
 function getUsersData() {
@@ -291,6 +374,46 @@ function updateVisitsCount(obj) {
   });
   localStorageUsers = [...new Set(localStorageUsers)];
   localStorage.setItem("users", JSON.stringify(localStorageUsers));
+  localStorage.setItem("currentUser", JSON.stringify(obj));
+}
+
+function updateBooks(obj, btnId) {
+  localStorageUsers.forEach((user) => {
+    let isEqual = JSON.stringify(user) === JSON.stringify(obj);
+    if (isEqual) {
+      let bookName = document.querySelectorAll(".book_name")[btnId];
+      let bookAuthor = document.querySelectorAll(".book_author")[btnId];
+      let bookObj = {
+        id: btnId,
+        bookName: bookName.textContent,
+        bookAuthor: bookAuthor.textContent,
+      };
+      user.books.push(bookObj);
+      obj.books.push(bookObj);
+
+      let ul = document.querySelector(".modal-profile-rended-books");
+      let li = document.createElement("li");
+      const authorFormatted = bookAuthor.textContent.replace(/^By\s+/i, "");
+      let bookFullName = bookName.textContent + ", " + authorFormatted;
+      li.textContent = bookFullName;
+      li.classList.add("modal-profile-rended-books__item");
+      ul.appendChild(li);
+    }
+  });
+  localStorageUsers = [...new Set(localStorageUsers)];
+  localStorage.setItem("users", JSON.stringify(localStorageUsers));
+  localStorage.setItem("currentUser", JSON.stringify(obj));
+}
+
+function updateCardCredentials(obj) {
+  localStorageUsers.forEach((user) => {
+    let isEqual = JSON.stringify(user) === JSON.stringify(obj);
+    if (isEqual) {
+      user.hasLibraryCard = true;
+    }
+  });
+  localStorageUsers = [...new Set(localStorageUsers)];
+  localStorage.setItem("users", JSON.stringify(localStorageUsers));
 }
 
 function updateUserProfileIcon(currentUser) {
@@ -309,7 +432,6 @@ function updateProfileDropMenu(obj) {
       ".drop-menu-nav--auth .drop-menu-nav__header"
     );
     profileAuth.setAttribute("title", obj.firstname + " " + obj.lastname);
-    profileTitle.classList.toggle("drop-menu-nav__header--logged");
     profileTitle.textContent = obj.cardNumber;
   } else {
     authComponent.classList.remove("drop-menu-nav--active-target");
@@ -317,12 +439,21 @@ function updateProfileDropMenu(obj) {
   }
 }
 
-buyCardBtns.forEach((btn) => {
+buyCardBtns.forEach((btn, btnId) => {
   btn.addEventListener("click", (e) => {
     if (!userAuthorized) {
       loginMenu.classList.toggle("modal--active-target");
       e.stopPropagation();
-    } else buyCardMenu.classList.toggle("modal--active-target");
+    } else if (!currentUser.hasLibraryCard) {
+      buyCardMenu.classList.toggle("modal--active-target");
+    } else {
+      getUsersData();
+      updateBooks(currentUser, btnId);
+      updateProfileDropMenu(currentUser);
+      setDigitalCardFormData(currentUser);
+      btn.classList.add("own");
+      btn.textContent = "Own";
+    }
   });
 });
 
