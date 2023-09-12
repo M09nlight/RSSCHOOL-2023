@@ -213,6 +213,12 @@ regForm.addEventListener("submit", (e) => {
     hasLibraryCard: false,
     books: [],
   };
+  localStorage.setItem("userAuthorized", true);
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  userAuthorized = localStorage.getItem("userAuthorized");
+  updateUserProfileIcon(currentUser);
+  updateProfileDropMenu(currentUser);
+  updateDigitalCards(currentUser);
 
   getUsersData();
   updateUsersData(currentUser);
