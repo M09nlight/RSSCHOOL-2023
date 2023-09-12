@@ -1135,8 +1135,8 @@ a:hover {
     display: flex;
 }
 .modal--buy-card {
-    width: 650px;
-    height: 540px;
+    max-width: 640px;
+    max-height: 540px;
 }
 .modal-profile__left {
     background-color: #0c0c0e;
