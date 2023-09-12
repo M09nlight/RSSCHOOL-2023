@@ -210,16 +210,10 @@ regForm.addEventListener("submit", (e) => {
     books: [],
   };
 
-  localStorage.setItem("userAuthorized", true);
-  localStorage.setItem("currentUser", JSON.stringify(currentUser));
-  userAuthorized = localStorage.getItem("userAuthorized");
-  updateUserProfileIcon(currentUser);
-  updateProfileDropMenu(currentUser);
-  updateDigitalCards(currentUser);
   getUsersData();
   updateUsersData(currentUser);
   registerMenu.classList.toggle("modal--active-target");
-  userAuthorized = localStorage.getItem("userAuthorized");
+  regForm.reset();
 });
 
 loginForm.addEventListener("submit", (e) => {
