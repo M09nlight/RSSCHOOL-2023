@@ -171,6 +171,10 @@ logoutBtn.addEventListener("click", (e) => {
   updateProfileDropMenu(null);
   updateDigitalCards(null);
   updateRendedBooks();
+  let ul = document.querySelector(".modal-profile-rended-books");
+  [].slice.call(ul.children).forEach((li) => {
+    ul.removeChild(li);
+  });
 });
 
 registerCloseBtn.addEventListener("click", (event) => {
@@ -237,6 +241,7 @@ loginForm.addEventListener("submit", (e) => {
     updateProfileDropMenu(findedUser);
     updateDigitalCards(findedUser);
     loginMenu.classList.toggle("modal--active-target");
+    loginForm.reset();
   }
 });
 
