@@ -1131,7 +1131,7 @@ a:hover {
 }
 .modal--profile {
     width: 600px;
-    height: 400px;
+    min-height: 400px;
     display: flex;
 }
 .modal--buy-card {
