@@ -1162,6 +1162,7 @@ a:hover {
 }
 .modal-profile__full-name {
     width: 120px;
+    margin: 0 25px;
     min-height: 30px;
     background: #fff;
     color: #000;
