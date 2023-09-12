@@ -1138,7 +1138,7 @@ a:hover {
 }
 .modal--profile {
     max-width: 600px;
-    min-height: 400px;
+    max-height: 400px;
     display: flex;
 }
 .modal--buy-card {
@@ -1207,7 +1207,8 @@ a:hover {
     text-transform: capitalize;
 }
 .modal-profile-rended-books {
-    margin-bottom: 40px;
+    height: 100px;
+    overflow-y: auto;
 }
 .modal-profile__subtitle {
     margin-top: 20px;
