@@ -1130,7 +1130,7 @@ a:hover {
     background: #fff;
 }
 .modal--profile {
-    width: 600px;
+    max-width: 600px;
     min-height: 400px;
     display: flex;
 }
@@ -1175,7 +1175,7 @@ a:hover {
     overflow: hidden;
 }
 .modal-profile__right {
-    padding: 40px 20px;
+    padding: 40px 60px 40px 20px;
 }
 .modal-profile__content {
 }
@@ -1189,18 +1189,26 @@ a:hover {
     margin-bottom: 40px;
 }
 .modal-profile__subtitle {
-    color: #0c0c0e;
-    font-size: 25px;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
     line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
 }
 .modal-profile-rended-books {
     margin-bottom: 40px;
 }
+.modal-profile__subtitle {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
 .modal-profile-rended-books__item {
     position: relative;
-    padding-left: 10px;
+    padding-left: 15px;
+    margin-left: 12px;
     color: #000;
     font-size: 20px;
     line-height: 20px;
