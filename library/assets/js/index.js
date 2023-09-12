@@ -73,7 +73,7 @@ function updateRendedBooks() {
   }
 }
 
-profile.addEventListener("click", (e) => {
+profile.addEventListener("pointerdown", (e) => {
   noAuthComponent.classList.toggle("drop-menu-nav--active-target");
   if (burger.classList.contains("active")) {
     menu.classList.toggle("active");
@@ -82,7 +82,7 @@ profile.addEventListener("click", (e) => {
   }
   e.stopPropagation();
 });
-profileAuth.addEventListener("click", (e) => {
+profileAuth.addEventListener("pointerdown", (e) => {
   authComponent.classList.toggle("drop-menu-nav--active-target");
   if (burger.classList.contains("active")) {
     menu.classList.toggle("active");

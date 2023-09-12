@@ -175,6 +175,13 @@ h2 {
 .profile {
     position: relative;
 }
+.profile__drop-menu {
+    overflow: hidden;
+    width: calc(100% + 20px);
+    height: 100vh;
+    position: absolute;
+    margin-top: -8px;
+}
 .drop-menu-nav {
     text-align: center;
     font-size: 15px;
@@ -185,8 +192,8 @@ h2 {
     width: 80px;
     padding: 5px 0 20px;
     position: absolute;
-    right: 0;
-    top: 40px;
+    right: 20px;
+    top: 0;
     opacity: 0;
     z-index: 5;
     transform: translateX(+220%);
@@ -1485,6 +1492,13 @@ a:hover {
     .profile-user {
         margin-right: 40px;
     }
+    .profile__drop-menu {
+        overflow: hidden;
+        width: calc(100% + 60px);
+    }
+    .drop-menu-nav {
+        right: 60px;
+    }
     .images__prev {
         margin-right: 56px;
     }
@@ -1551,8 +1565,8 @@ a:hover {
         max-width: 100%;
     }
     .sticky {
-        position: fixed;
-        top: 20px;
+        position: sticky;
+        top: 0;
         right: 20px;
         left: 20px;
         background-color: rgba(200, 200, 200, 0.8);
