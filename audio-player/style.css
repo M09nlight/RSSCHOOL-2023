@@ -11,31 +11,35 @@
     margin: 0;
 }
 :root {
-    --pink: #ff74a4;
-    --violet: #9f6ea3;
-    --lightblack: #515c6f;
-    --white: #ffffff;
+    --chestnut: #d6685a;
+    --salmon-red: #d95032;
+    --black: #0d0d0d;
     --darkwhite: #cecaca;
-    --pinkshadow: #ffcbdd;
+    --pale-taupe: #d9c1ab;
     --lightbshadow: rgba(0, 0, 0, 0.15);
 }
 body {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     min-height: 100vh;
+    height: 100%;
+    flex-direction: column;
+    background: #000;
 }
 .wrapper {
     width: 380px;
+    margin: auto;
     overflow: hidden;
     border-radius: 15px;
     padding: 25px 30px;
-    background: var(--white);
+    background: var(--pale-taupe);
     box-shadow: 0px 6px 15px var(--lightbshadow);
     position: relative;
+    z-index: 9999;
 }
-.background {
-    background-color: #000;
+
+#background {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -43,13 +47,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-}
-#background {
-    height: 100%;
-    width: 100%;
     margin: auto;
     filter: blur(20px);
-    opacity: 0.7;
+    opacity: 0.6;
 }
 .wrapper i {
     cursor: pointer;
@@ -66,11 +66,11 @@ body {
 
 .top-bar i {
     font-size: 30px;
-    color: var(--lightblack);
+    color: var(--black);
 }
 .top-bar span {
     font-size: 18px;
-    color: var(--lightblack);
+    color: var(--black);
 }
 .main-music-status {
     margin: 0 auto;
@@ -91,7 +91,7 @@ body {
 .song-details {
     text-align: center;
     margin: 30px 0;
-    color: var(--lightblack);
+    color: var(--black);
 }
 .song-details .name {
     font-size: 21px;
@@ -104,7 +104,7 @@ body {
     height: 6px;
     width: 100%;
     border-radius: 50px;
-    background: #f0f0f0;
+    background: var(--darkwhite);
     cursor: pointer;
 }
 .progress-area .progress-bar {
@@ -112,7 +112,7 @@ body {
     width: 0%;
     position: relative;
     border-radius: inherit;
-    background: linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%);
+    background: linear-gradient(90deg, var(--chestnut) 0%, var(--salmon-red) 100%);
 }
 .progress-bar::before {
     content: "";
@@ -137,7 +137,7 @@ body {
 }
 .timer span {
     font-size: 13px;
-    color: var(--lightblack);
+    color: var(--black);
 }
 .controls {
     margin: 40px 0 5px 0;
@@ -146,7 +146,7 @@ body {
 .controls i {
     font-size: 28px;
     user-select: none;
-    background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+    background: linear-gradient(var(--chestnut) 0%, var(--salmon-red) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -164,8 +164,8 @@ body {
 .controls .play-pause {
     height: 54px;
     width: 54px;
-    background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
-    box-shadow: 0px 0px 5px var(--pink);
+    background: linear-gradient(var(--pale-taupe) 0%, var(--darkwhite) 100%);
+    box-shadow: 0px 0px 5px var(--chestnut);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -177,7 +177,7 @@ body {
     height: 43px;
     width: 43px;
     border-radius: inherit;
-    background: linear-gradient(var(--pink) 0%, var(--violet) 100%);
+    background: linear-gradient(var(--chestnut) 0%, var(--salmon-red) 100%);
 }
 .play-pause i {
     height: 43px;
@@ -200,7 +200,7 @@ body {
     width: 100%;
     padding: 15px 30px;
     border-radius: 15px;
-    background: var(--white);
+    background: var(--pale-taupe);
     box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.14s ease-out;
 }
@@ -213,7 +213,7 @@ body {
     display: flex;
     align-items: center;
     font-size: 19px;
-    color: var(--lightblack);
+    color: var(--black);
 }
 .header .row i {
     cursor: default;
@@ -223,7 +223,7 @@ body {
 }
 .header #close {
     font-size: 22px;
-    color: var(--lightblack);
+    color: var(--black);
 }
 .music-list ul {
     margin: 10px 0;
@@ -238,7 +238,7 @@ body {
     list-style: none;
     padding-bottom: 10px;
     margin-bottom: 5px;
-    color: var(--lightblack);
+    color: var(--black);
     border-bottom: 1px solid #e5e5e5;
 }
 .music-list ul li:last-child {
@@ -254,6 +254,6 @@ ul li .audio-duration {
     font-size: 16px;
 }
 ul li.playing {
-    color: var(--violet);
+    color: var(--salmon-red);
     pointer-events: none;
 }
