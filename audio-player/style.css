@@ -34,6 +34,23 @@ body {
     box-shadow: 0px 6px 15px var(--lightbshadow);
     position: relative;
 }
+.background {
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#background {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    filter: blur(20px);
+    opacity: 0.7;
+}
 .wrapper i {
     cursor: pointer;
 }
@@ -54,6 +71,9 @@ body {
 .top-bar span {
     font-size: 18px;
     color: var(--lightblack);
+}
+.main-music-status {
+    margin: 0 auto;
 }
 .img-area {
     height: 256px;
@@ -232,4 +252,8 @@ ul li .row p {
 }
 ul li .audio-duration {
     font-size: 16px;
+}
+ul li.playing {
+    color: var(--violet);
+    pointer-events: none;
 }
