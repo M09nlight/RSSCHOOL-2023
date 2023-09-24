@@ -4,11 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Document</title>
 </head>
 
 <body>
-    init
+    <img src="" alt="" id="background">
+    <div class="wrapper">
+        <div class="top-bar">
+            <!-- <i class="material-symbols-outlined">
+                expand_more
+            </i> -->
+            <span class="main-music-status">Now Playing</span>
+            <!-- <i class="material-symbols-outlined">
+                more_horiz
+            </i> -->
+        </div>
+        <div class="img-area">
+            <img src="assets/img/DiLiberta-нора.jpg" alt="">
+        </div>
+        <div class="song-details">
+            <div class="name">di liberta - нора</div>
+            <div class="artist">di liberta</div>
+        </div>
+        <div class="progress-area">
+            <div class="progress-bar">
+            </div>
+            <div class="timer">
+                <span class="current">0:00</span>
+                <span class="duration"></span>
+                <audio id="main-audio" src=""></audio>
+            </div>
+        </div>
+        <div class="controls">
+            <i id="repeat-playlist" class="material-symbols-outlined" title="Playlist looped">
+                repeat
+            </i>
+            <i id="prev" class="material-symbols-outlined">
+                skip_previous
+            </i>
+            <div class="play-pause">
+                <i class="material-symbols-outlined">
+                    play_arrow
+                </i>
+            </div>
+            <i id="next" class="material-symbols-outlined">
+                skip_next
+            </i>
+            <i id="more-music" class="material-symbols-outlined">
+                queue_music
+            </i>
+        </div>
+        <div class="music-list">
+            <div class="header">
+                <div class="row">
+                    <i class="material-symbols-outlined">
+                        queue_music
+                    </i>
+                    <span>Music list</span>
+                </div>
+                <i id="close" class="material-symbols-outlined">
+                    close
+                </i>
+            </div>
+            <ul>
+            </ul>
+        </div>
+    </div>
+    <footer class="footer-body" bis_skin_checked="1">
+        <p>2023</p>
+        <a class="pl-50" href="https://rs.school/js-stage0/" target="_blank"><img src="assets/svg/rs_school.svg" alt=""
+                srcset=""></a>
+        <a href="https://github.com/m09nlight" target="_blank">M09nlight</a>
+    </footer>
 </body>
+<script src="assets/js/music-list.js"></script>
+<script src="assets/js/script.js"></script>
 
 </html>
