@@ -257,3 +257,27 @@ ul li.playing {
     color: var(--salmon-red);
     pointer-events: none;
 }
+.footer-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--black);
+    width: 100%;
+    margin-top: 20px;
+    background: var(--pale-taupe);
+    z-index: 9999;
+}
+.footer-body img {
+    width: 36px;
+    height: 36px;
+}
+.footer-body a,
+.footer-body:visited {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+.footer-body a:hover {
+    color: var(--salmon-red);
+}
