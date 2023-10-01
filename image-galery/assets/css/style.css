@@ -1,19 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+}
+
 .container {
     margin: 0 auto;
+    min-height: 100vh;
     max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+.header {
+    display: flex;
+}
+.input-field {
+    margin: 10px;
+    position: relative;
+    height: 30px;
+    width: 20%;
+    margin-bottom: 25px;
+}
+.input {
+    position: absolute;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    font-size: 16px;
+    color: #d41b1b;
+}
+.input:focus + .label,
+.input:valid + .label {
+    transform: translateY(30px);
+    font-size: 14px;
+    color: #fff;
+    background: #ff006a;
+    padding: 2px 6px;
+}
+.input-field span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    background: #ff006a;
+    width: 100%;
+    height: 2px;
+}
+.input-field span::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00b0ff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease-in-out;
+}
+.input:focus ~ span::before,
+.input:valid ~ span::before {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+}
+.label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #555;
+    pointer-events: none;
+    display: block;
+    transition: 0.5s;
 }
 .img-galery__items {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     width: 100%;
     gap: 20px;
 }
 .img-galery__item {
-    width: 30%;
+    width: 32%;
     height: 200px;
     background-position: center;
     background-size: cover;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.footer-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--black);
+    width: 100%;
+    margin-top: 20px;
+    background: var(--pale-taupe);
+    z-index: 9999;
+}
+.footer-body img {
+    width: 50px;
+    height: 50px;
+}
+.footer-body a,
+.footer-body:visited {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+.footer-body a:hover {
+    color: var(--salmon-red);
 }
