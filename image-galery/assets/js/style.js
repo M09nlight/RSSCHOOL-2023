@@ -1,7 +1,12 @@
-let query = "winter";
-let url = `https://api.unsplash.com/search/photos?query=${query}&&per_page=9&client_id=5968czt58_7r9BYrqK4NbSeQd5NYYuIAdO_NKP0Wkwo`;
+let searchVal = "winter";
+let limitVal = "9";
+let url = `https://api.unsplash.com/search/photos?query=${searchVal}&&per_page=${limitVal}&client_id=5968czt58_7r9BYrqK4NbSeQd5NYYuIAdO_NKP0Wkwo`;
 
 let galery = document.querySelector(".img-galery__items");
+
+let inputs = document.querySelectorAll(".input");
+let search = document.querySelector("#search");
+let limit = document.querySelector("#limit");
 
 async function getData(url) {
   const res = await fetch(url);
@@ -16,20 +21,29 @@ async function getData(url) {
     imgItem.classList.add("img-galery__item");
     galery.appendChild(imgItem);
   }
-  console.log(data);
 }
 getData(url);
 
-let inputs = document.querySelectorAll(".input");
-let search = document.querySelector("#search");
 search.focus();
-let limit = document.querySelector("#limit");
 inputs.forEach((input) => {
   input.addEventListener("keydown", (e) => {
     if (e.keyCode === 13) {
-      console.log(input);
-      url = `https://api.unsplash.com/search/photos?query=${search.value}&per_page=${limit.value}&client_id=5968czt58_7r9BYrqK4NbSeQd5NYYuIAdO_NKP0Wkwo`;
+      if (search.value) {
+        searchVal = search.value;
+      }
+      if (limit.value) {
+        limitVal = limit.value;
+      }
+      url = `https://api.unsplash.com/search/photos?query=${searchVal}&per_page=${limitVal}&client_id=5968czt58_7r9BYrqK4NbSeQd5NYYuIAdO_NKP0Wkwo`;
       getData(url);
     }
+  });
+});
+let clearBtns = document.querySelectorAll(".clear");
+
+clearBtns.forEach((el) => {
+  el.addEventListener("click", () => {
+    let enterField = el.parentElement.querySelector(".input");
+    enterField.value = "";
   });
 });
