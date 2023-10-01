@@ -1,0 +1,19 @@
+.container {
+    margin: 0 auto;
+    max-width: 1440px;
+}
+.img-galery__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+.img-galery__item {
+    width: 30%;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
