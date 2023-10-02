@@ -17,9 +17,10 @@ async function getData(url) {
   }
   for (let i = 0; i < data.results.length; i++) {
     let imgItem = document.createElement("img");
-    imgItem.src = data.results[i].links.download;
+    imgItem.src = data.results[i].urls.regular;
     imgItem.classList.add("img-galery__item");
     galery.appendChild(imgItem);
+    console.log(data);
   }
 }
 getData(url);
