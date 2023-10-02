@@ -100,8 +100,8 @@
 .img-galery__item {
     width: 400px;
     height: 200px;
-    background-position: center;
-    background-size: cover;
+    object-fit: cover;
+    object-position: center;
     border-radius: 5px;
     cursor: pointer;
 }

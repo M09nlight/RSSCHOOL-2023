@@ -1,4 +1,4 @@
-let searchVal = "winter";
+let searchVal = "full moon";
 let limitVal = "9";
 let url = `https://api.unsplash.com/search/photos?query=${searchVal}&&per_page=${limitVal}&client_id=5968czt58_7r9BYrqK4NbSeQd5NYYuIAdO_NKP0Wkwo`;
 
